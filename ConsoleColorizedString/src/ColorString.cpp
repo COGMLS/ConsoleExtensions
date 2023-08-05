@@ -1,4 +1,4 @@
-#include "../ConsoleColorString.hpp"
+#include "../ColorString.hpp"
 
 std::string ColorizeString(std::string str, ConsoleForegroundColor fColor)
 {

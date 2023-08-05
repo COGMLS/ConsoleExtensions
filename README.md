@@ -1,6 +1,10 @@
 # Console Colorized String
 
-This library provide an simple way to use ASCII colors on compatible consoles with custom string data types for C++, allowing set/reset the foreground and background colors. Also is possible to convert common C/C++ string data to custom string and to custom to default data types.
+This library provides a simple way to use ASCII colors on compatible consoles with custom string data types for C++, allowing set/reset the foreground and background colors. Also is possible to convert common C/C++ string data to custom string and to custom to default data types.
+
+## Known Bugs:
+
+* ⚠ When combining both strings and wide strings in Windows Terminal the custom wide string background color will appear in entire line. NOTE: This behavior wasn’t tested in other terminals.
 
 ## Credits:
 

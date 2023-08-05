@@ -2,8 +2,13 @@
 
 #include "../ConsoleColorizedString/ConsoleColorString.hpp"
 
+#define STRING_TEST
+//#define WSTRING_TEST
+
 int main()
 {
+	#ifdef STRING_TEST
+
 	std::cout << "Starting tests with colorized string for consoles..." << std::endl;
 
 	std::string t = ColorizeString("String test", ConsoleForegroundColor::ForeBrightCyan);
@@ -32,6 +37,41 @@ int main()
 	std::cout << ColorizeString("\n\n\nPress enter to continue...", ConsoleForegroundColor::ForeRed);
 	#pragma warning ( suppress : 6031 ) // Make Visual Studio ignore warning for this test
 	std::getchar();
+
+	#endif // !STRING_TEST
+
+	#ifdef WSTRING_TEST
+
+	std::wcout << L"Starting tests with colorized wide string for consoles..." << std::endl;
+
+	std::wstring w = ColorizeWstring(L"Wide string test", ConsoleForegroundColor::ForeBrightCyan);
+
+	std::wcout << w << std::endl;
+	std::wprintf(L"%s", w.c_str());
+
+	std::wcout << ColorizeWstring(L"\nWide string Test 2", ConsoleForegroundColor::ForeBrightMagenta) << std::endl;
+	std::wcout << ColorizeWstring(L"\nWide string Test 3", ConsoleBackgroundColor::BackBrightRed) << std::endl;
+	std::wcout << ColorizeWstring(L"\nWide string Test 4", ConsoleForegroundColor::ForeBrightCyan, ConsoleBackgroundColor::BackBrightYellow) << " " << std::endl;
+
+	std::wstring w1 = ColorizeWstring(L"\nWide string Test 5", ConsoleForegroundColor::ForeBrightGreen);
+	std::wstring w2 = ColorizeWstring(L"\nWide string Test 6", ConsoleBackgroundColor::BackBlue);
+	std::wstring w3 = ColorizeWstring(L"\nWide string Test 7", ConsoleForegroundColor::ForeBrightYellow, ConsoleBackgroundColor::BackGray);
+
+	std::wcout << w1 << std::endl;
+	std::wcout << w2 << std::endl;
+	std::wcout << w3 << std::endl;
+
+	std::wcout << UnColorizeWstring(w1) << std::endl;
+	std::wcout << UnColorizeWstring(w2) << std::endl;
+	std::wcout << UnColorizeWstring(w3) << std::endl;
+
+	std::wcout << "End of test with wide strings" << std::endl;
+
+	std::wcout << ColorizeWstring(L"\n\n\nPress enter to continue...", ConsoleForegroundColor::ForeRed);
+	#pragma warning ( suppress : 6031 ) // Make Visual Studio ignore warning for this test
+	std::getchar();
+
+	#endif // !WSTRING_TEST
 
 	return 0;
 }
