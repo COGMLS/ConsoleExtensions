@@ -1,4 +1,4 @@
-#include "../ColorWstring.hpp"
+#include "ColorWstring.hpp"
 
 std::wstring ColorizeWstring(std::wstring wstr, ConsoleForegroundColor fColor)
 {

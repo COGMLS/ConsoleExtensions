@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "../Extensions/ConsoleColorizedString/ConsoleColorString.hpp"
+#include "ConsoleColorizedString/ConsoleColorString.hpp"
 
 #define STRING_TEST
 //#define WSTRING_TEST
