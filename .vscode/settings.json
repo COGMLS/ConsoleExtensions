@@ -50,5 +50,11 @@
         "editor.suggest.preview": true,
         "files.encoding": "utf8"
     },
-    "git.branchProtection": ["master"]
+    "files.associations": {
+        "*.sln": "properties",
+        "iostream": "cpp"
+    },
+    "git.branchProtection": ["master"],
+    "cmake.options.statusBarVisibility": "icon",
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
 }
