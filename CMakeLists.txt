@@ -19,8 +19,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(ReposRoot ${CMAKE_CURRENT_LIST_DIR})
 set(FinalBinDir "${ReposRoot}/build/bin")
 #set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${FinalBinDir})
-#set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${FinalBinDir})
+
+if (NOT WIN32)
+	set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${FinalBinDir})
+endif()
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${FinalBinDir})
+
+# Set to debug all solution components:
+set(DebugSolution True)
 
 project(ConsoleExtensionsSolution VERSION 0.0.1 DESCRIPTION "Complete solution for Console Extensions Solution repository.")
 

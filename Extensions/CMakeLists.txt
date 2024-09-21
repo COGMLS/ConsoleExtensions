@@ -27,7 +27,7 @@ if(WIN32)
 	add_compile_definitions(WIN32)
 endif()
 
-if(DebugConsoleExtHelper)
+if(DebugConsoleExtHelper OR DebugSolution)
 	add_compile_definitions(DEBUG)
 endif()
 
