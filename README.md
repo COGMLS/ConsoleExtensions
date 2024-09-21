@@ -1,10 +1,20 @@
-# Console Colorized String
+# Console Extensions
 
-This library provides a simple way to use ASCII colors on compatible consoles with custom string data types for C++, allowing set/reset the foreground and background colors. Also is possible to convert common C/C++ string data to custom string and to custom to default data types.
+## About this project:
 
-## Known Bugs:
+This project was designed to make easier the process to use create or modified C++ console projects, providing support with a simplified ASCII controls and also unified interface controls for Operation System console functions. The Console Extensions is developed under the ISO C++ features, allowing an easy way to integrate it on any software, independent the Operation System that is running.
 
-* ⚠ When combining both strings and wide strings in Windows Terminal the custom wide string background color will appear in entire line. NOTE: This behavior wasn’t tested in other terminals.
+**IMPORTANT:** The Console Extensions contain an collection of base libraries and headers to provide an equal behavior depending on the compiler. An good example is the Microsoft’s implementation on `std::exception` that is originally designed to be only a base class for other error handling classes. In `ErrorReport` library, that is an exception class that inherit from `std::exception` and provide the same behavior of Microsoft’s version, including an constructor to support to send an error message.
+
+**NOTE:** *This project is under development and is not ready for production use. The actual libraries available are functional, but is are under possible modifications.*
+
+## Projects:
+
+| Project / Library | Version | Notes |
+| ----------------- | ------- | ----- |
+| ConsoleColorizedString | 1.6.13 |  |
+| ConsoleExtInterface | 0.0.1 |  |
+| ErrorReport | 0.0.1 | In this moment this library has been problems to be used in CMake |
 
 ## Credits:
 
@@ -16,7 +26,7 @@ An license copy is available in [here](/LICENSE.txt)
 
 MIT License
 
-Copyright (c) 2022 Matheus Lopes Silvati
+Copyright (c) 2022-2024 Matheus Lopes Silvati
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
