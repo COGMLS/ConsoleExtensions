@@ -12,45 +12,49 @@
 //#define STRING_TEST
 #define WSTRING_TEST
 
+using namespace ConsoleExt;
+
 int main (int argc, const char* argv[], const char* argp[])
 {
 	//std::locale loc1("en_US.utf8");
 	std::locale loc2("pt_BR.utf8");
 	std::locale::global(loc2);
 	
+	#ifdef WIN32
 	SetConsoleOutputCP(65001);
+	#endif // !WIN32
 
 	int mainReturn = 0;
 
-	DrawBorder();
-	SetCursorPosition(5, 2);
+	DrawBorderW();
+	SetCursorPositionW(5, 2);
 
 	std::wcout << L"Project Drive Manager Console" << std::endl;
 
-	DrawHorizontalLine(1, 3, 110, true, true);
+	DrawHorizontalLineW(1, 3, 110, true, true);
 
-	DrawHorizontalLine(1, 6, 12, true, false);
+	DrawHorizontalLineW(1, 6, 12, true, false);
 	
-	SetCursorPosition(5, 5);
+	SetCursorPositionW(5, 5);
 	std::wcout << L"Test 1";
 
-	DrawHorizontalLine(6, 6, 12, false, false);
+	DrawHorizontalLineW(6, 6, 12, false, false);
 
-	DrawBorder(10, 10, 50, 20);
+	DrawBorderW(10, 10, 50, 20);
 
 	using namespace std::chrono_literals;
 
 	for (int i = 0; i <= 100; i++)
 	{
-		DrawProgressBar(2, 25, 50, 100, i);
-		std::this_thread::sleep_for(250ms);
+		DrawProgressBarW(2, 25, 50, 100, i);
+		std::this_thread::sleep_for(50ms);
 	}
 	
-	SetCursorPosition(1, 130);
+	SetCursorPositionW(1, 130);
 
 	#ifdef STRING_TEST
 
-	std::cout << "Starting tests with colorized string for consoles..." << std::endl;
+	std::cout << "\nStarting tests with colorized string for consoles..." << std::endl;
 
 	std::string t = ColorizeString("String test", ConsoleForegroundColor::ForeBrightCyan);
 
@@ -83,7 +87,7 @@ int main (int argc, const char* argv[], const char* argp[])
 
 	#ifdef WSTRING_TEST
 
-	std::wcout << L"Starting tests with colorized wide string for consoles..." << std::endl;
+	std::wcout << L"\nStarting tests with colorized wide string for consoles..." << std::endl;
 
 	std::wstring w = ColorizeWstring(L"Wide string test", ConsoleForegroundColor::ForeBrightCyan);
 
