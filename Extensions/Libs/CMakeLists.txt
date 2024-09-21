@@ -15,7 +15,11 @@ cmake_minimum_required(VERSION 3.28)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-project(ConsoleExtHelperLibs VERSION 0.0.1 DESCRIPTION "Helper Solution to compile all extension libraries for Console Extensions Solution repository.")
+project(
+			ConsoleExtHelperLibs
+			VERSION 0.0.1
+			DESCRIPTION "Helper Solution to compile all extension libraries for Console Extensions Solution repository."
+		)
 
 ###########################################################
 #
@@ -23,5 +27,6 @@ project(ConsoleExtHelperLibs VERSION 0.0.1 DESCRIPTION "Helper Solution to compi
 #
 ###########################################################
 
+#add_subdirectory("ErrorReport")
 add_subdirectory("ConsoleColorizedString")
 add_subdirectory("ConsoleExtInterface")
