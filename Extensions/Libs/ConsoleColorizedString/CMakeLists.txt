@@ -24,7 +24,7 @@ if(WIN32)
 	add_compile_definitions(_WINDLL)
 endif()
 
-if(DebugConsoleExtHelper)
+if(DebugConsoleExtHelper OR DebugSolution)
 	add_compile_definitions(DEBUG)
 endif()
 
@@ -32,7 +32,11 @@ add_compile_definitions(UNICODE)
 add_compile_definitions(_UNICODE)
 
 # Defined the project:
-project(ConsoleExtColorStr VERSION 0.0.1 DESCRIPTION "Color support for std::string and std::wstring for Console Extensions Solution.")
+project(
+			ConsoleExtColorStr
+			VERSION 1.6.13
+			DESCRIPTION "Color support for std::string and std::wstring for Console Extensions Solution."
+		)
 
 ###########################################################
 #
@@ -46,14 +50,30 @@ project(ConsoleExtColorStr VERSION 0.0.1 DESCRIPTION "Color support for std::str
 # Define to export the library methods if is Windows:
 if(WIN32)
 	# Add the export here
-	add_compile_definitions(CONSOLEEXTCOLORSTR_EXPORTS)
+	add_compile_definitions(CONSOLE_EXT_COLOR_STR_EXPORTS)
+	add_compile_definitions(CONSOLE_EXT_COLOR_WSTR_EXPORTS)
 endif()
 
 # Define the library build properties:
 if (WIN32)
-	add_library(ConsoleExtColorStr SHARED "dllmain.hpp" "dllmain.cpp" "ColorString.hpp" "ColorString.cpp" "ColorWstring.hpp" "ColorWstring.cpp" "ConsoleColorString.hpp" "EnumColors.hpp")
+	add_library(
+					ConsoleExtColorStr
+					SHARED
+					"dllmain.hpp" "dllmain.cpp"
+					"ColorString.hpp" "ColorString.cpp"
+					"ColorWstring.hpp" "ColorWstring.cpp"
+					"ConsoleColorString.hpp"
+					"EnumColors.hpp"
+				)
 else()
-	add_library(ConsoleExtColorStr SHARED "ColorString.hpp" "ColorString.cpp" "ColorWstring.hpp" "ColorWstring.cpp" "ConsoleColorString.hpp" "EnumColors.hpp")
+	add_library(
+					ConsoleExtColorStr
+					SHARED
+					"ColorString.hpp" "ColorString.cpp"
+					"ColorWstring.hpp" "ColorWstring.cpp"
+					"ConsoleColorString.hpp"
+					"EnumColors.hpp"
+				)
 endif()
 
 # If necessary, link libraries to this one:

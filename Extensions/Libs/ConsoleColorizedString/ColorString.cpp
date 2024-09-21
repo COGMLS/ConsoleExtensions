@@ -1,6 +1,6 @@
 #include "ColorString.hpp"
 
-std::string ColorizeString(std::string str, ConsoleForegroundColor fColor)
+std::string ConsoleExt::ColorizeString(std::string str, ConsoleExt::ConsoleForegroundColor fColor)
 {
 	std::string temp = "";
 	temp = "\033[" + std::to_string(fColor) + 'm';
@@ -10,7 +10,7 @@ std::string ColorizeString(std::string str, ConsoleForegroundColor fColor)
 	return temp;
 }
 
-std::string ColorizeString(std::string str, ConsoleBackgroundColor bColor)
+std::string ConsoleExt::ColorizeString(std::string str, ConsoleExt::ConsoleBackgroundColor bColor)
 {
 	std::string temp = "";
 	temp = "\033[" + std::to_string(bColor) + 'm';
@@ -20,7 +20,7 @@ std::string ColorizeString(std::string str, ConsoleBackgroundColor bColor)
 	return temp;
 }
 
-std::string ColorizeString(std::string str, ConsoleForegroundColor fColor, ConsoleBackgroundColor bColor)
+std::string ConsoleExt::ColorizeString(std::string str, ConsoleExt::ConsoleForegroundColor fColor, ConsoleExt::ConsoleBackgroundColor bColor)
 {
 	std::string temp = "";
 	temp = "\033[" + std::to_string(bColor) + ';' + std::to_string(fColor) + 'm';
@@ -30,7 +30,7 @@ std::string ColorizeString(std::string str, ConsoleForegroundColor fColor, Conso
 	return temp;
 }
 
-std::string UnColorizeString(std::string str)
+std::string ConsoleExt::UnColorizeString(std::string str)
 {
 	std::string temp = "";
 

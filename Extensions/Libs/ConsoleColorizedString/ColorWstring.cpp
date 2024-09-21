@@ -1,6 +1,6 @@
 #include "ColorWstring.hpp"
 
-std::wstring ColorizeWstring(std::wstring wstr, ConsoleForegroundColor fColor)
+std::wstring ConsoleExt::ColorizeWstring(std::wstring wstr, ConsoleExt::ConsoleForegroundColor fColor)
 {
 	std::wstring temp = L"";
 	temp = L"\033[" + std::to_wstring(fColor) + L'm';
@@ -10,7 +10,7 @@ std::wstring ColorizeWstring(std::wstring wstr, ConsoleForegroundColor fColor)
 	return temp;
 }
 
-std::wstring ColorizeWstring(std::wstring wstr, ConsoleBackgroundColor bColor)
+std::wstring ConsoleExt::ColorizeWstring(std::wstring wstr, ConsoleExt::ConsoleBackgroundColor bColor)
 {
 	std::wstring temp = L"";
 	temp = L"\033[" + std::to_wstring(bColor) + L'm';
@@ -20,7 +20,7 @@ std::wstring ColorizeWstring(std::wstring wstr, ConsoleBackgroundColor bColor)
 	return temp;
 }
 
-std::wstring ColorizeWstring(std::wstring wstr, ConsoleForegroundColor fColor, ConsoleBackgroundColor bColor)
+std::wstring ConsoleExt::ColorizeWstring(std::wstring wstr, ConsoleExt::ConsoleForegroundColor fColor, ConsoleExt::ConsoleBackgroundColor bColor)
 {
 	std::wstring temp = L"";
 	temp = L"\033[" + std::to_wstring(bColor) + L';' + std::to_wstring(fColor) + L'm';
@@ -30,7 +30,7 @@ std::wstring ColorizeWstring(std::wstring wstr, ConsoleForegroundColor fColor, C
 	return temp;
 }
 
-std::wstring UnColorizeWstring(std::wstring wstr)
+std::wstring ConsoleExt::UnColorizeWstring(std::wstring wstr)
 {
 	std::wstring temp = L"";
 
