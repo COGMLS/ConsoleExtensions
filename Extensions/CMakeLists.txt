@@ -43,5 +43,5 @@ project(ConsoleExtensionsHelper VERSION 0.0.1 DESCRIPTION "Complete solution for
 #
 ###########################################################
 
-add_subdirectory("Console")
 add_subdirectory("Libs")
+add_subdirectory("Console")

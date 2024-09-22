@@ -50,7 +50,7 @@ project(
 # Define to export the library methods if is Windows:
 if(WIN32)
 	# Add the export here
-	#add_compile_definitions(CONSOLE_EXT_ERROR_EXPORTS)
+	add_compile_definitions(CONSOLE_EXT_ERROR_EXPORTS)
 	add_compile_definitions(CONSOLE_EXT_EXCEPTION_EXPORTS)
 endif()
 
