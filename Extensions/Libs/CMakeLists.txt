@@ -27,6 +27,7 @@ project(
 #
 ###########################################################
 
-#add_subdirectory("ErrorReport")
+add_subdirectory("ErrorReport")
+add_subdirectory("ConsoleExtControls")
 add_subdirectory("ConsoleColorizedString")
 add_subdirectory("ConsoleExtInterface")
