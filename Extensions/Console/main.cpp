@@ -13,6 +13,7 @@
 #define WSTRING_TEST
 
 using namespace ConsoleExt;
+using namespace ConsoleExt::LowLevel;
 
 int main (int argc, const char* argv[], const char* argp[])
 {
@@ -26,33 +27,33 @@ int main (int argc, const char* argv[], const char* argp[])
 
 	int mainReturn = 0;
 
-	DrawBorderW();
-	SetCursorPositionW(5, 2);
+	#ifdef STRING_TEST
+	
+	DrawBorder();
+	SetCursorPosition(5, 2);
 
 	std::wcout << L"Project Drive Manager Console" << std::endl;
 
-	DrawHorizontalLineW(1, 3, 110, true, true);
+	DrawHorizontalLine(1, 3, 110, true, true);
 
-	DrawHorizontalLineW(1, 6, 12, true, false);
+	DrawHorizontalLine(1, 6, 12, true, false);
 	
-	SetCursorPositionW(5, 5);
-	std::wcout << L"Test 1";
+	SetCursorPosition(5, 5);
+	std::cout << "Test 1";
 
-	DrawHorizontalLineW(6, 6, 12, false, false);
+	DrawHorizontalLine(6, 6, 12, false, false);
 
-	DrawBorderW(10, 10, 50, 20);
+	DrawBorder(10, 10, 50, 20);
 
 	using namespace std::chrono_literals;
 
 	for (int i = 0; i <= 100; i++)
 	{
-		DrawProgressBarW(2, 25, 50, 100, i);
+		DrawProgressBar(2, 25, 50, 100, i);
 		std::this_thread::sleep_for(50ms);
 	}
 	
-	SetCursorPositionW(1, 130);
-
-	#ifdef STRING_TEST
+	SetCursorPosition(1, 130);
 
 	std::cout << "\nStarting tests with colorized string for consoles..." << std::endl;
 
@@ -86,6 +87,32 @@ int main (int argc, const char* argv[], const char* argp[])
 	#endif // !STRING_TEST
 
 	#ifdef WSTRING_TEST
+
+	DrawBorderW();
+	SetCursorPositionW(5, 2);
+
+	std::wcout << L"Project Drive Manager Console" << std::endl;
+
+	DrawHorizontalLineW(1, 3, 110, true, true);
+
+	DrawHorizontalLineW(1, 6, 12, true, false);
+	
+	SetCursorPositionW(5, 5);
+	std::wcout << L"Test 1";
+
+	DrawHorizontalLineW(6, 6, 12, false, false);
+
+	DrawBorderW(10, 10, 50, 20);
+
+	using namespace std::chrono_literals;
+
+	for (int i = 0; i <= 100; i++)
+	{
+		DrawProgressBarW(2, 25, 50, 100, i);
+		std::this_thread::sleep_for(50ms);
+	}
+	
+	SetCursorPositionW(1, 130);
 
 	std::wcout << L"\nStarting tests with colorized wide string for consoles..." << std::endl;
 

@@ -50,12 +50,23 @@ project(
 include_directories("${ConsoleExtRoot}/Libs/ConsoleColorizedString")
 include_directories("${ConsoleExtRoot}/Libs/ConsoleExtInterface")
 include_directories("${ConsoleExtRoot}/Libs/ErrorReport")
+include_directories("${ConsoleExtRoot}/Libs/ConsoleExtControls")
 
 # Define the executable properties:
 add_executable(
 					ConsoleExtTest
 					"main.cpp"
 				)
+
+###########################################################
+# WARNING: About the linking libraries for the Console:
+# --------------------------------------------------------
+# For some reason, the methods in the libraries are not
+# recognized directly, resulting in LINK2019 with MSVC or
+# "undefined referece to" in GCC, but the methods are generated
+# and exported. To mitigate this problem, set as "True" the
+# CMake variable "UseTargetLinkLibs" to link then manually.
+###########################################################
 
 set(UseTargetLinkLibs True)
 
@@ -75,6 +86,6 @@ if(UseTargetLinkLibs)
 		target_link_libraries(ConsoleExtTest ${CMAKE_SOURCE_DIR}/build/bin/libConsoleExtColorStr.so)
 	endif()
 else()
-	link_libraries(ConsoleExtTest ConsoleExtColorStr)
 	link_libraries(ConsoleExtTest ConsoleExtInterface)
+	link_libraries(ConsoleExtTest ConsoleExtColorStr)
 endif()
