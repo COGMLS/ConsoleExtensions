@@ -37,7 +37,7 @@ namespace ConsoleExt
 	 * @class Console Extension Exception
 	 * @brief The Console Extension Exception is a exception error class inherited from ISO C++ Exception, with similar Microsoft's implementation, using a additional constructor with message argument support. This class provide a unified solution over multiple platforms.
 	 */
-	class exception : std::exception
+	class Exception : std::exception
 	{
 		private:
 
@@ -45,27 +45,27 @@ namespace ConsoleExt
 
 		public:
 
-			exception() noexcept
+			Exception() noexcept
 			{
 
 			}
 
-			exception(const char message[])
+			Exception(const char message[])
 			{
 				this->message = message;
 			}
 
-			exception(const ConsoleExt::exception& other) noexcept
+			Exception(const ConsoleExt::Exception& other) noexcept
 			{
 				this->message = other.message;
 			}
 
-			~exception()
+			~Exception()
 			{
 
 			}
 
-			ConsoleExt::exception& operator=(const ConsoleExt::exception& other) noexcept
+			ConsoleExt::Exception& operator=(const ConsoleExt::Exception& other) noexcept
 			{
 				if (this == &other)
 				{
