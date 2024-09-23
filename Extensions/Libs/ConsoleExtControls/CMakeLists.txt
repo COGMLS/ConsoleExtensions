@@ -46,6 +46,7 @@ project(
 
 # Include libraries directories source codes:
 #include_directories("${ConsoleExtRoot}/Libs/<lib>")
+include_directories("${ConsoleExtRoot}/Libs/ErrorReport")
 
 # Define to export the library methods if is Windows:
 if(WIN32)
@@ -61,6 +62,7 @@ if (WIN32)
 					"dllmain.hpp" "dllmain.cpp"
 					"AsciiControls.hpp"
 					"ConsoleControls.hpp"
+					"LowLevelControls.hpp" "LowLevelControls.cpp"
 				)
 else()
 	add_library(
@@ -68,8 +70,11 @@ else()
 					SHARED
 					"AsciiControls.hpp"
 					"ConsoleControls.hpp"
+					"LowLevelControls.hpp" "LowLevelControls.cpp"
 				)
 endif()
+
+link_libraries(ConsoleExtControls ConsoleExtErrorReport)
 
 # If necessary, link libraries to this one:
 if(DebugConsoleExtHelper)
