@@ -47,6 +47,7 @@ project(
 # Include libraries directories source codes:
 #include_directories("${ConsoleExtRoot}/Libs/<lib>")
 include_directories("${ConsoleExtRoot}/Libs/ErrorReport")
+include_directories("${ConsoleExtRoot}/Libs/ConsoleExtControls")
 
 # Define to export the library methods if is Windows:
 if(WIN32)
@@ -60,21 +61,36 @@ if (WIN32)
 					ConsoleExtInterface
 					SHARED
 					"dllmain.hpp" "dllmain.cpp"
+					"AsciiGraphicInterface.hpp"
 					"ConsoleExtInterface.hpp" "ConsoleExtInterface.cpp"
 				)
 else()
 	add_library(
 					ConsoleExtInterface
 					SHARED
+					"AsciiGraphicInterface.hpp"
 					"ConsoleExtInterface.hpp" "ConsoleExtInterface.cpp"
 				)
 endif()
 
-#link_libraries(${PROJECT_NAME} ConsoleExtErrorReport)
+set(UseTargetLinkLibs False)
 
-# If necessary, link libraries to this one:
-if(DebugConsoleExtHelper)
-	#target_link_libraries(ConsoleExtTest ${CMAKE_SOURCE_DIR}/build/Extensions/Libs/<lib>/Debug/<libfile>.lib)
+if(UseTargetLinkLibs)
+	if (WIN32)
+		if(DebugConsoleExtHelper)
+			#target_link_libraries(ConsoleExtInterface ${CMAKE_SOURCE_DIR}/build/Extensions/Libs/<lib>/Debug/<libfile>.lib)
+			target_link_libraries(ConsoleExtInterface ${CMAKE_SOURCE_DIR}/build/Extensions/Libs/ConsoleExtControls/Debug/ConsoleExtControls.lib)
+			target_link_libraries(ConsoleExtInterface ${CMAKE_SOURCE_DIR}/build/Extensions/Libs/ConsoleReport/Debug/ConsoleExtReport.lib)
+		else()
+			#target_link_libraries(ConsoleExtInterface ${CMAKE_SOURCE_DIR}/build/Extensions/Libs/<lib>/Release/<libfile>.lib)
+			target_link_libraries(ConsoleExtInterface ${CMAKE_SOURCE_DIR}/build/Extensions/Libs/ConsoleExtControls/Release/ConsoleExtControls.lib)
+			target_link_libraries(ConsoleExtInterface ${CMAKE_SOURCE_DIR}/build/Extensions/Libs/ConsoleReport/Release/ConsoleExtReport.lib)
+		endif()
+	else()
+		target_link_libraries(ConsoleExtInterface ${CMAKE_SOURCE_DIR}/build/bin/libConsoleExtControls.so)
+		target_link_libraries(ConsoleExtInterface ${CMAKE_SOURCE_DIR}/build/bin/libConsoleExtReport.so)
+	endif()
 else()
-	#target_link_libraries(ConsoleExtTest ${CMAKE_SOURCE_DIR}/build/Extensions/Libs/<lib>/Release/<libfile>.lib)
+	link_libraries(ConsoleExtInterface ConsoleExtControls)
+	link_libraries(ConsoleExtInterface ConsoleExtErrorReport)
 endif()

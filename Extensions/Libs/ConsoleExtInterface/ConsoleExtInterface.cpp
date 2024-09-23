@@ -1,17 +1,5 @@
 #include "ConsoleExtInterface.hpp"
 
-void ConsoleExt::SetCursorPosition(int x, int y)
-{
-	std::string s = CONSOLE_EXT_SET_CURSOR_POS(x, y);
-	std::cout << s;
-}
-
-void ConsoleExt::SetCursorPositionW(int x, int y)
-{
-	std::wstring s = CONSOLE_EXT_SET_CURSOR_POS_W(x, y);
-	std::wcout << s;
-}
-
 void ConsoleExt::DrawBorder(int startPosX, int startPosY, int maxWidth, int maxHeight, int setCursorPosX, int setCursorPosY)
 {
 	//int maxHeight = 30;
@@ -19,13 +7,13 @@ void ConsoleExt::DrawBorder(int startPosX, int startPosY, int maxWidth, int maxH
 
 	if (startPosX <= 0 || startPosY <= 0)
 	{
-		ConsoleExt::exception e("Start position parameter(s) is/are less than 1!");
+		ConsoleExt::Exception e("Start position parameter(s) is/are less than 1!");
 		std::cerr << e.what() << std::endl;
 	}
 
 	if (startPosX >= maxWidth || startPosY >= maxHeight)
 	{
-		ConsoleExt::exception e("Start position parameter(s) is/are equal to maximum value(s)!");
+		ConsoleExt::Exception e("Start position parameter(s) is/are equal to maximum value(s)!");
 		std::cerr << e.what() << std::endl;
 	}
 
@@ -38,7 +26,7 @@ void ConsoleExt::DrawBorder(int startPosX, int startPosY, int maxWidth, int maxH
 	{
 		for (int x = startPosX; x <= maxWidth; x++)
 		{
-			ConsoleExt::SetCursorPosition(x, y);
+			ConsoleExt::LowLevel::SetCursorPosition(x, y);
 
 			// Make a complete draw on first and last console lines:
 			if (y == startPosY || y == maxHeight)
@@ -87,7 +75,7 @@ void ConsoleExt::DrawBorder(int startPosX, int startPosY, int maxWidth, int maxH
 
 	if (setCursorPosX >= 1 && setCursorPosY >= 1)
 	{
-		ConsoleExt::SetCursorPosition(actualCursorPosX, actualCursorPosY);
+		ConsoleExt::LowLevel::SetCursorPosition(actualCursorPosX, actualCursorPosY);
 	}
 	else
 	{
@@ -102,13 +90,13 @@ void ConsoleExt::DrawBorderW(int startPosX, int startPosY, int maxWidth, int max
 
 	if (startPosX <= 0 || startPosY <= 0)
 	{
-		ConsoleExt::exception e("Start position parameter(s) is/are less than 1!");
+		ConsoleExt::Exception e("Start position parameter(s) is/are less than 1!");
 		std::wcerr << e.what() << std::endl;
 	}
 
 	if (startPosX >= maxWidth || startPosY >= maxHeight)
 	{
-		ConsoleExt::exception e("Start position parameter(s) is/are equal to maximum value(s)!");
+		ConsoleExt::Exception e("Start position parameter(s) is/are equal to maximum value(s)!");
 		std::wcerr << e.what() << std::endl;
 	}
 
@@ -121,7 +109,7 @@ void ConsoleExt::DrawBorderW(int startPosX, int startPosY, int maxWidth, int max
 	{
 		for (int x = startPosX; x <= maxWidth; x++)
 		{
-			ConsoleExt::SetCursorPositionW(x, y);
+			ConsoleExt::LowLevel::SetCursorPositionW(x, y);
 
 			// Make a complete draw on first and last console lines:
 			if (y == startPosY || y == maxHeight)
@@ -170,7 +158,7 @@ void ConsoleExt::DrawBorderW(int startPosX, int startPosY, int maxWidth, int max
 
 	if (setCursorPosX >= 1 && setCursorPosY >= 1)
 	{
-		ConsoleExt::SetCursorPositionW(actualCursorPosX, actualCursorPosY);
+		ConsoleExt::LowLevel::SetCursorPositionW(actualCursorPosX, actualCursorPosY);
 	}
 	else
 	{
@@ -192,13 +180,13 @@ void ConsoleExt::DrawHorizontalLine(int xStart, int yStart, int count, bool useS
 
 	if (count < 0)
 	{
-		ConsoleExt::exception e("Count out of range!");
+		ConsoleExt::Exception e("Count out of range!");
 		std::cerr << e.what() << std::endl;
 	}
 
 	std::cout << CONSOLE_EXT_SAVE_CURSOR_POS;
 
-	ConsoleExt::SetCursorPosition(xStart, yStart);
+	ConsoleExt::LowLevel::SetCursorPosition(xStart, yStart);
 
 	for (int i = xStart; i <= count; i++)
 	{
@@ -233,13 +221,13 @@ void ConsoleExt::DrawHorizontalLineW(int xStart, int yStart, int count, bool use
 
 	if (count < 0)
 	{
-		ConsoleExt::exception e("Count out of range!");
+		ConsoleExt::Exception e("Count out of range!");
 		std::wcerr << e.what() << std::endl;
 	}
 
 	std::wcout << CONSOLE_EXT_SAVE_CURSOR_POS_W;
 
-	ConsoleExt::SetCursorPositionW(xStart, yStart);
+	ConsoleExt::LowLevel::SetCursorPositionW(xStart, yStart);
 
 	for (int i = xStart; i <= count; i++)
 	{
@@ -264,7 +252,7 @@ void ConsoleExt::DrawProgressBar(int progressBarXPos, int progressBarYPos, int m
 {
 	std::cout << CONSOLE_EXT_SAVE_CURSOR_POS;
 
-	ConsoleExt::SetCursorPosition(progressBarXPos, progressBarYPos);
+	ConsoleExt::LowLevel::SetCursorPosition(progressBarXPos, progressBarYPos);
 
 	// The progress bar should look like: [*****    ] | (###|###)
 
@@ -311,7 +299,7 @@ void ConsoleExt::DrawProgressBar(int progressBarXPos, int progressBarYPos, int m
 		std::cout << " ";
 	}
 
-	ConsoleExt::SetCursorPosition(progressBarXPos, progressBarYPos);
+	ConsoleExt::LowLevel::SetCursorPosition(progressBarXPos, progressBarYPos);
 
 	// Draw the progress bar:
 
@@ -339,7 +327,7 @@ void ConsoleExt::DrawProgressBarW(int progressBarXPos, int progressBarYPos, int 
 {
 	std::wcout << CONSOLE_EXT_SAVE_CURSOR_POS_W;
 
-	ConsoleExt::SetCursorPositionW(progressBarXPos, progressBarYPos);
+	ConsoleExt::LowLevel::SetCursorPositionW(progressBarXPos, progressBarYPos);
 
 	// The progress bar should look like: [*****    ] | (###|###)
 
@@ -386,7 +374,7 @@ void ConsoleExt::DrawProgressBarW(int progressBarXPos, int progressBarYPos, int 
 		std::wcout << L" ";
 	}
 
-	ConsoleExt::SetCursorPositionW(progressBarXPos, progressBarYPos);
+	ConsoleExt::LowLevel::SetCursorPositionW(progressBarXPos, progressBarYPos);
 
 	// Draw the progress bar:
 

@@ -12,6 +12,9 @@
 
 	#pragma warning (disable : 4251)
 	#pragma warning (disable : 4273)
+
+	//Remove warning C4566
+	#pragma warning (disable : 4566)
 #else
 	#if __GNUC__ >= 4
 		#ifdef CONSOLE_EXT_GRAPHIC_INTERFACE_EXPORTS
@@ -31,75 +34,15 @@
 #include <iostream>
 #include <string>
 
+// Import the ConsoleExtControls:
+#include "ConsoleControls.hpp"
+
+// Internal library headers:
 #include "ConsoleExtException.hpp"
-
-#define ESC "\x1B"
-#define ESC_W L"\x1B"
-
-#define CSI ESC"["
-#define CSI_W ESC_W L"["
-
-#define CONSOLE_EXT_SAVE_CURSOR_POS ESC" 7"
-#define CONSOLE_EXT_SAVE_CURSOR_POS_W ESC_W L" 7"
-
-#define CONSOLE_EXT_RESTORE_CURSOR_POS ESC" 8"
-#define CONSOLE_EXT_RESTORE_CURSOR_POS_W ESC_W L" 8"
-
-#define CONSOLE_EXT_SET_CURSOR_POS(x,y) CSI + std::to_string(y) + ";" + std::to_string(x) + "H";
-#define CONSOLE_EXT_SET_CURSOR_POS_W(x,y) CSI_W + std::to_wstring(y) + L";" + std::to_wstring(x) + L"H";
-
-#define USE_UNICODE_CHARS
-
-#ifdef USE_UNICODE_CHARS
-	#define BORDER_TOP_LEFT_CORNER				"\u250F"
-	#define BORDER_TOP_RIGHT_CORNER				"\u2513"
-	#define BORDER_BOTTOM_LEFT_CORNER			"\u2517"
-	#define BORDER_BOTTOM_RIGHT_CORNER			"\u251B"
-	#define BORDER_LINE_HORIZONTAL				"\u2501"
-	#define BORDER_LINE_VERTICAL				"\u2503"
-	#define BORDER_CROSS_LINE					"\u254B"
-
-	#define BORDER_TOP_LEFT_CORNER_W			L"\u250F"
-	#define BORDER_TOP_RIGHT_CORNER_W			L"\u2513"
-	#define BORDER_BOTTOM_LEFT_CORNER_W			L"\u2517"
-	#define BORDER_BOTTOM_RIGHT_CORNER_W		L"\u251B"
-	#define BORDER_LINE_HORIZONTAL_W			L"\u2501"
-	#define BORDER_LINE_VERTICAL_W				L"\u2503"
-	#define BORDER_CROSS_LINE_W					L"\u254B"
-#else
-	#define BORDER_TOP_LEFT_CORNER				"/"
-	#define BORDER_TOP_RIGHT_CORNER				"\\"
-	#define BORDER_BOTTOM_LEFT_CORNER			"\\"
-	#define BORDER_BOTTOM_RIGHT_CORNER			"/"
-	#define BORDER_LINE_HORIZONTAL				"-"
-	#define BORDER_LINE_VERTICAL				"|"
-	#define BORDER_CROSS_LINE					"+"
-
-	#define BORDER_TOP_LEFT_CORNER_W			L"/"
-	#define BORDER_TOP_RIGHT_CORNER_W			L"\\"
-	#define BORDER_BOTTOM_LEFT_CORNER_W			L"\\"
-	#define BORDER_BOTTOM_RIGHT_CORNER_W		L"/"
-	#define BORDER_LINE_HORIZONTAL_W			L"-"
-	#define BORDER_LINE_VERTICAL_W				L"|"
-	#define BORDER_CROSS_LINE_W					L"+"
-#endif // !USE_UNICODE_CHARS
+#include "AsciiGraphicInterface.hpp"
 
 namespace ConsoleExt
 {
-	/**
-	 * @brief Set the console cursor's position
-	 * @param x Position on X-axis
-	 * @param y Position on Y-axis
-	 */
-	CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API void SetCursorPosition(int x, int y);
-	
-	/**
-	 * @brief Set the console cursor's position
-	 * @param x Position on X-axis
-	 * @param y Position on Y-axis
-	 */
-	CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API void SetCursorPositionW(int x, int y);
-
 	/**
 	 * @brief Draw a border in the console screen
 	 * @param startPosX Define the start position on X-axis
