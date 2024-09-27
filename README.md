@@ -8,13 +8,16 @@ This project was designed to make easier the process to use create or modified C
 
 **NOTE:** *This project is under development and is not ready for production use. The actual libraries available are functional, but is are under possible modifications.*
 
+**IMPORTANT:** (2024/09/27) ***The Console Extensions was redesigned to be compiled as a unified library. Reducing the dependency between each one and making easier to implement***
+
 ## Projects:
 
 | Project / Library | Version | Notes |
 | ----------------- | ------- | ----- |
 | ConsoleColorizedString | 1.6.13 |  |
+| ConsoleExtControls | 0.5.0 |  |
 | ConsoleExtInterface | 0.0.1 |  |
-| ErrorReport | 0.0.1 | In this moment this library has been problems to be used in CMake |
+| ErrorReport | 0.0.1 |  |
 
 ## Credits:
 

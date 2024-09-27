@@ -1,10 +1,6 @@
-# Console Colorized String
+# Console Extension Error Report
 
-This library provides a simple way to use ASCII colors on compatible consoles with custom string data types for C++, allowing set/reset the foreground and background colors. Also is possible to convert common C/C++ string data to custom string and to custom to default data types.
-
-## Known Bugs:
-
-* ⚠ When combining both strings and wide strings in Windows Terminal the custom wide string background color will appear in entire line. NOTE: This behavior wasn’t tested in other terminals.
+The Console Extension Error Report contains the libraries for error reporting and providing similar support for `std::exception` provided by Microsoft's implementation with message support.
 
 ## Credits:
 
@@ -16,7 +12,7 @@ An license copy is available in [here](/LICENSE.txt)
 
 MIT License
 
-Copyright (c) 2022-2024 Matheus Lopes Silvati
+Copyright (c) 2024 Matheus Lopes Silvati
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
