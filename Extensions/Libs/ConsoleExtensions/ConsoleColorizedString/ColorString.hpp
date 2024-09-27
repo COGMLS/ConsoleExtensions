@@ -30,6 +30,8 @@
 
 #include <string>
 #include "EnumColors.hpp"
+#include "AsciiControls.hpp"
+#include "AsciiSGR.hpp"
 
 namespace ConsoleExt
 {
@@ -59,9 +61,38 @@ namespace ConsoleExt
 	CONSOLE_EXT_COLOR_STR_LIB_API std::string ColorizeString(std::string str, ConsoleExt::ConsoleForegroundColor fColor, ConsoleExt::ConsoleBackgroundColor bColor);
 
 	/**
+	 * @brief Colorize string
+	 * @param str String to be colorized
+	 * @param fColor Foreground color string
+	 * @return Colorized string, using ASCII code
+	 */
+	//CONSOLE_EXT_COLOR_STR_LIB_API std::string ColorizeString(std::string str, unsigned short color, bool background);
+
+	/**
+	 * @brief Colorize string
+	 * @param str String to be colorized
+	 * @param color Hexadecimal color (unsigned int)
+	 * @param background Define to apply the color to the background
+	 * @return Colorized string, using ASCII code
+	 * @note The integer is used as hexadecimal color using the traditional RGB (0xRRGGBB)
+	 */
+	CONSOLE_EXT_COLOR_STR_LIB_API std::string ColorizeString(std::string str, unsigned int color, bool background);
+
+	/**
+	 * @brief Colorize string
+	 * @param str String to be colorized
+	 * @param fColor Foreground color with hexadecimal value.
+	 * @param bColor Background color with hexadecimal value.
+	 * @return Colorized string, using ASCII code
+	 * @note The integer is used as hexadecimal color using the traditional RGB (0xRRGGBB)
+	 */
+	CONSOLE_EXT_COLOR_STR_LIB_API std::string ColorizeString(std::string str, unsigned int fColor, unsigned int bColor);
+
+	/**
 	 * @brief Remove the colors from a string (background and foreground)
 	 * @param str String to be uncolored
 	 * @return Return the uncolored string if is successful, otherwise will return the same string if failed
+	 * @note This function was not designed to remove the color on strings with custom RGB colors
 	 */
 	CONSOLE_EXT_COLOR_STR_LIB_API std::string UnColorizeString(std::string str);
 }

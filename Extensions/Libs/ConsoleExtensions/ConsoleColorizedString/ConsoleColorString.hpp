@@ -10,5 +10,6 @@
 #include "ColorString.hpp"
 #include "ColorWstring.hpp"
 #include "EnumColors.hpp"
+#include "AsciiSGR.hpp"
 
 #endif // !ConsoleColorizedString_Hpp

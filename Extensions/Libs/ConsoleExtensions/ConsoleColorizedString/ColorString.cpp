@@ -30,6 +30,77 @@ std::string ConsoleExt::ColorizeString(std::string str, ConsoleExt::ConsoleForeg
 	return temp;
 }
 
+std::string ConsoleExt::ColorizeString(std::string str, unsigned int color, bool background)
+{
+	std::string temp = "";
+
+	int r = color & 0xFF0000;
+	int g = color & 0x00FF00;
+	int b = color & 0x0000FF;
+
+	r = r >> 16;
+	g = g >> 8;
+
+	if (background)
+	{
+		temp = CSI + std::to_string(SgrOptions::CustomBackgroundColor) + ";";
+	}
+	else
+	{
+		temp = CSI + std::to_string(SgrOptions::CustomForegroundColor) + ";";
+	}
+
+	temp += "2;";
+	temp += std::to_string(r) + ";" + std::to_string(g) + ";" + std::to_string(b) + "m";
+
+	temp += str;
+
+	if (background)
+	{
+		temp += CSI + std::to_string(SgrOptions::DefaultBackgroundColor) + "m";
+	}
+	else
+	{
+		temp += CSI + std::to_string(SgrOptions::DefaultForegroundColor) + "m";
+	}
+
+	return temp;
+}
+
+std::string ConsoleExt::ColorizeString(std::string str, unsigned int fColor, unsigned int bColor)
+{
+    std::string temp = "";
+
+	int r = fColor & 0xFF0000;
+	int g = fColor & 0x00FF00;
+	int b = fColor & 0x0000FF;
+
+	r = r >> 16;
+	g = g >> 8;
+
+	temp = CSI + std::to_string(SgrOptions::CustomForegroundColor) + ";2;";
+	temp += std::to_string(r) + ";" + std::to_string(g) + ";" + std::to_string(b) + "m";
+
+	r = bColor & 0xFF0000;
+	g = bColor & 0x00FF00;
+	b = bColor & 0x0000FF;
+
+	r = r >> 16;
+	g = g >> 8;
+
+	temp += CSI + std::to_string(SgrOptions::CustomBackgroundColor) + ";2;";
+	temp += std::to_string(r) + ";" + std::to_string(g) + ";" + std::to_string(b) + "m";
+
+	temp += str;
+
+	temp += CSI + std::to_string(SgrOptions::DefaultForegroundColor) + "m";
+	temp += CSI + std::to_string(SgrOptions::DefaultBackgroundColor) + "m";
+
+	//temp += CSI + std::to_string(SgrOptions::ResetConsole) + "m";
+
+	return temp;
+}
+
 std::string ConsoleExt::UnColorizeString(std::string str)
 {
 	std::string temp = "";

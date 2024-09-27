@@ -44,8 +44,8 @@
 #define CSI 		ESC "["								// Control Sequence Introducer
 #define CSI_W 		ESC_W L"["							// Control Sequence Introducer
 
-#define SGR(n,m) 	CSI + std::to_string(n) + "m"		// Select Graphic Rendition
-#define SGR_W(n,m) 	CSI_W + std::to_wstring(n) + L"m"	// Select Graphic Rendition
+#define SGR(n) 		CSI + std::to_string(n) + "m"		// Select Graphic Rendition
+#define SGR_W(n) 	CSI_W + std::to_wstring(n) + L"m"	// Select Graphic Rendition
 
 //
 // Console Basic Controls:
