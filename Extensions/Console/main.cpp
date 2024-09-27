@@ -9,8 +9,8 @@
 #include "ConsoleExtInterface.hpp"
 #include "ConsoleColorString.hpp"
 
-//#define STRING_TEST
-#define WSTRING_TEST
+#define STRING_TEST
+//#define WSTRING_TEST
 
 using namespace ConsoleExt;
 using namespace ConsoleExt::LowLevel;
@@ -77,6 +77,13 @@ int main (int argc, const char* argv[], const char* argp[])
 	std::cout << UnColorizeString(y1) << std::endl;
 	std::cout << UnColorizeString(y2) << std::endl;
 	std::cout << UnColorizeString(y3) << std::endl;
+
+	unsigned int color = 0xe5bf1f;
+	unsigned int color2 = 0xda34c0;
+
+	std::cout << ColorizeString("\nNew test with custom colors", color, false) << std::endl;
+	std::cout << ColorizeString("\nNew test with custom colors 2", color, true) << std::endl;
+	std::cout << ColorizeString("\nNew test with custom foreground and background colors", color, color2) << std::endl;
 
 	std::cout << "End of test" << std::endl;
 
