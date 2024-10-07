@@ -32,6 +32,7 @@
 #include "EnumColors.hpp"
 #include "AsciiControls.hpp"
 #include "AsciiSGR.hpp"
+#include "ConsoleDataTypes.hpp"
 
 namespace ConsoleExt
 {
@@ -63,14 +64,6 @@ namespace ConsoleExt
 	/**
 	 * @brief Colorize string
 	 * @param str String to be colorized
-	 * @param fColor Foreground color string
-	 * @return Colorized string, using ASCII code
-	 */
-	//CONSOLE_EXT_COLOR_STR_LIB_API std::string ColorizeString(std::string str, unsigned short color, bool background);
-
-	/**
-	 * @brief Colorize string
-	 * @param str String to be colorized
 	 * @param color Hexadecimal color (unsigned int)
 	 * @param background Define to apply the color to the background
 	 * @return Colorized string, using ASCII code
@@ -81,12 +74,30 @@ namespace ConsoleExt
 	/**
 	 * @brief Colorize string
 	 * @param str String to be colorized
+	 * @param color ColorData structure
+	 * @param background Define to apply the color to the background
+	 * @return Colorized string, using ASCII code
+	 */
+	CONSOLE_EXT_COLOR_STR_LIB_API std::string ColorizeString(std::string str, ConsoleExt::ColorData color, bool background);
+
+	/**
+	 * @brief Colorize string
+	 * @param str String to be colorized
 	 * @param fColor Foreground color with hexadecimal value.
 	 * @param bColor Background color with hexadecimal value.
 	 * @return Colorized string, using ASCII code
 	 * @note The integer is used as hexadecimal color using the traditional RGB (0xRRGGBB)
 	 */
 	CONSOLE_EXT_COLOR_STR_LIB_API std::string ColorizeString(std::string str, unsigned int fColor, unsigned int bColor);
+
+	/**
+	 * @brief Colorize string
+	 * @param str String to be colorized
+	 * @param fColor Foreground Color Data structure
+	 * @param bColor Background Color Data structure
+	 * @return Colorized string, using ASCII code
+	 */
+	CONSOLE_EXT_COLOR_STR_LIB_API std::string ColorizeString(std::string str, ConsoleExt::ColorData fColor, ConsoleExt::ColorData bColor);
 
 	/**
 	 * @brief Remove the colors from a string (background and foreground)

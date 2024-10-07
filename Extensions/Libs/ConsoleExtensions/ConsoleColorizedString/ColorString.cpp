@@ -67,6 +67,40 @@ std::string ConsoleExt::ColorizeString(std::string str, unsigned int color, bool
 	return temp;
 }
 
+std::string ConsoleExt::ColorizeString(std::string str, ConsoleExt::ColorData color, bool background)
+{
+    std::string temp = "";
+
+	int r = static_cast<int>(color.r);
+	int g = static_cast<int>(color.g);
+	int b = static_cast<int>(color.b);
+
+	if (background)
+	{
+		temp = CSI + std::to_string(SgrOptions::CustomBackgroundColor) + ";";
+	}
+	else
+	{
+		temp = CSI + std::to_string(SgrOptions::CustomForegroundColor) + ";";
+	}
+
+	temp += "2;";
+	temp += std::to_string(r) + ";" + std::to_string(g) + ";" + std::to_string(b) + "m";
+
+	temp += str;
+
+	if (background)
+	{
+		temp += CSI + std::to_string(SgrOptions::DefaultBackgroundColor) + "m";
+	}
+	else
+	{
+		temp += CSI + std::to_string(SgrOptions::DefaultForegroundColor) + "m";
+	}
+
+	return temp;
+}
+
 std::string ConsoleExt::ColorizeString(std::string str, unsigned int fColor, unsigned int bColor)
 {
     std::string temp = "";
@@ -87,6 +121,34 @@ std::string ConsoleExt::ColorizeString(std::string str, unsigned int fColor, uns
 
 	r = r >> 16;
 	g = g >> 8;
+
+	temp += CSI + std::to_string(SgrOptions::CustomBackgroundColor) + ";2;";
+	temp += std::to_string(r) + ";" + std::to_string(g) + ";" + std::to_string(b) + "m";
+
+	temp += str;
+
+	temp += CSI + std::to_string(SgrOptions::DefaultForegroundColor) + "m";
+	temp += CSI + std::to_string(SgrOptions::DefaultBackgroundColor) + "m";
+
+	//temp += CSI + std::to_string(SgrOptions::ResetConsole) + "m";
+
+	return temp;
+}
+
+std::string ConsoleExt::ColorizeString(std::string str, ConsoleExt::ColorData fColor, ConsoleExt::ColorData bColor)
+{
+	std::string temp = "";
+
+	int r = static_cast<int>(fColor.r);
+	int g = static_cast<int>(fColor.g);
+	int b = static_cast<int>(fColor.b);
+
+	temp = CSI + std::to_string(SgrOptions::CustomForegroundColor) + ";2;";
+	temp += std::to_string(r) + ";" + std::to_string(g) + ";" + std::to_string(b) + "m";
+
+	r = static_cast<int>(bColor.r);
+	g = static_cast<int>(bColor.g);
+	b = static_cast<int>(bColor.b);
 
 	temp += CSI + std::to_string(SgrOptions::CustomBackgroundColor) + ";2;";
 	temp += std::to_string(r) + ";" + std::to_string(g) + ";" + std::to_string(b) + "m";

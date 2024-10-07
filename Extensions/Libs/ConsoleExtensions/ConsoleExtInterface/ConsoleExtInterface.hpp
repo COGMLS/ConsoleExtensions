@@ -54,7 +54,7 @@ namespace ConsoleExt
 	 * @note startPosX and startPosY need be greater than zero.
 	 * @note If CONSOLE_EXT_SET_CURSOR_POSX or CONSOLE_EXT_SET_CURSOR_POSY holds zero or a negative value, the cursor will be restored to last position before draw the border.
 	 */
-	CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API void DrawBorder(int startPosX = 1, int startPosY = 1, int maxWidth = 110, int maxHeight = 30, int CONSOLE_EXT_SET_CURSOR_POSX = 0, int CONSOLE_EXT_SET_CURSOR_POSY = 0);
+	CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API void DrawBorder(int startPosX, int startPosY, int maxWidth, int maxHeight, int CONSOLE_EXT_SET_CURSOR_POSX, int CONSOLE_EXT_SET_CURSOR_POSY);
 
 	/**
 	 * @brief Draw a border in the console screen
@@ -67,7 +67,7 @@ namespace ConsoleExt
 	 * @note startPosX and startPosY need be greater than zero.
 	 * @note If CONSOLE_EXT_SET_CURSOR_POSX or CONSOLE_EXT_SET_CURSOR_POSY holds zero or a negative value, the cursor will be restored to last position before draw the border.
 	 */
-	CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API void DrawBorderW(int startPosX = 1, int startPosY = 1, int maxWidth = 110, int maxHeight = 30, int CONSOLE_EXT_SET_CURSOR_POSX = 0, int CONSOLE_EXT_SET_CURSOR_POSY = 0);
+	CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API void DrawBorderW(int startPosX, int startPosY, int maxWidth, int maxHeight, int CONSOLE_EXT_SET_CURSOR_POSX, int CONSOLE_EXT_SET_CURSOR_POSY);
 
 	/**
 	 * @brief Draw a horizontal line in the console screen

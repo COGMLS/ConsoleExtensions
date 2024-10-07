@@ -51,6 +51,7 @@ project(
 #include_directories("${ConsoleExtLibRoot}/Libs/<lib>")
 include_directories("${ConsoleExtLibRoot}")
 include_directories("${ConsoleExtLibRoot}/ConsoleColorizedString")
+include_directories("${ConsoleExtLibRoot}/ConsoleDataTypes")
 include_directories("${ConsoleExtLibRoot}/ConsoleExtControls")
 include_directories("${ConsoleExtLibRoot}/ConsoleExtInterface")
 include_directories("${ConsoleExtLibRoot}/ErrorReport")
@@ -59,6 +60,7 @@ include_directories("${ConsoleExtLibRoot}/ErrorReport")
 if(WIN32)
 	# Add the export here
 	add_compile_definitions(CONSOLE_EXT_VERSION_EXPORTS)
+	add_compile_definitions(CONSOLE_EXT_DATA_TYPES_EXPORTS)
 	add_compile_definitions(CONSOLE_EXT_COLOR_STR_EXPORTS)
 	add_compile_definitions(CONSOLE_EXT_COLOR_WSTR_EXPORTS)
 	add_compile_definitions(CONSOLE_EXT_ERROR_EXPORTS)
@@ -76,6 +78,8 @@ if (WIN32)
 					# Console Extensions Version:
 					"ConsoleExtVersion.hpp"
 					"ConsoleExtVersionTools.hpp"
+					# Console Data Types:
+					"ConsoleDataTypes/ConsoleDataTypes.hpp"
 					# Console Colorized String:
 					"ConsoleColorizedString/ColorString.hpp" "ConsoleColorizedString/ColorString.cpp"
 					"ConsoleColorizedString/ColorWstring.hpp" "ConsoleColorizedString/ColorWstring.cpp"
@@ -100,6 +104,8 @@ else()
 					# Console Extensions Version:
 					"ConsoleExtVersion.hpp"
 					"ConsoleExtVersionTools.hpp"
+					# Console Data Types:
+					"ConsoleDataTypes/ConsoleDataTypes.hpp"
 					# Console Colorized String:
 					"ConsoleColorizedString/ColorString.hpp" "ConsoleColorizedString/ColorString.cpp"
 					"ConsoleColorizedString/ColorWstring.hpp" "ConsoleColorizedString/ColorWstring.cpp"

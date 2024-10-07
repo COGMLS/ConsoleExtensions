@@ -8,6 +8,7 @@
 #include <locale>
 #include "ConsoleExtInterface.hpp"
 #include "ConsoleColorString.hpp"
+#include "ConsoleControls.hpp"
 
 #define STRING_TEST
 //#define WSTRING_TEST
@@ -25,11 +26,17 @@ int main (int argc, const char* argv[], const char* argp[])
 	SetConsoleOutputCP(65001);
 	#endif // !WIN32
 
+	#ifdef WIN32
+	std::system("cls");
+	#else
+	std::system("clear");
+	#endif // !WIN32
+
 	int mainReturn = 0;
 
 	#ifdef STRING_TEST
 	
-	DrawBorder();
+	DrawBorder(1, 1, 110, 30, 0, 0);
 	SetCursorPosition(5, 2);
 
 	std::wcout << L"Project Drive Manager Console" << std::endl;
@@ -43,7 +50,9 @@ int main (int argc, const char* argv[], const char* argp[])
 
 	DrawHorizontalLine(6, 6, 12, false, false);
 
-	DrawBorder(10, 10, 50, 20);
+	DrawBorder(10, 10, 50, 20, 0, 0);
+
+	ConsoleExt::LowLevel::Bell();
 
 	using namespace std::chrono_literals;
 
@@ -60,34 +69,60 @@ int main (int argc, const char* argv[], const char* argp[])
 	std::string t = ColorizeString("String test", ConsoleForegroundColor::ForeBrightCyan);
 
 	std::cout << t << std::endl;
-	std::printf("%s", t.c_str());
+	std::printf("%s\n", t.c_str());
 
-	std::cout << ColorizeString("\nTest 2", ConsoleForegroundColor::ForeBrightMagenta) << std::endl;
-	std::cout << ColorizeString("\nTest 3", ConsoleBackgroundColor::BackBrightRed) << std::endl;
-	std::cout << ColorizeString("\nTest 4", ConsoleForegroundColor::ForeBrightCyan, ConsoleBackgroundColor::BackBrightYellow) << " " << std::endl;
+	std::cout << std::endl << ColorizeString("Test 2", ConsoleForegroundColor::ForeBrightMagenta) << std::endl;
+	std::cout << std::endl << ColorizeString("Test 3", ConsoleBackgroundColor::BackBrightRed) << std::endl;
+	std::cout << std::endl << ColorizeString("Test 4", ConsoleForegroundColor::ForeBrightCyan, ConsoleBackgroundColor::BackBrightYellow) << " new test with color string" << std::endl;
 
-	std::string y1 = ColorizeString("\nTest 5", ConsoleForegroundColor::ForeBrightGreen);
-	std::string y2 = ColorizeString("\nTest 6", ConsoleBackgroundColor::BackBlue);
-	std::string y3 = ColorizeString("\nTest 7", ConsoleForegroundColor::ForeBrightYellow, ConsoleBackgroundColor::BackGray);
+	std::string y1 = ColorizeString("Test 5", ConsoleForegroundColor::ForeBrightGreen);
+	std::string y2 = ColorizeString("Test 6", ConsoleBackgroundColor::BackBlue);
+	std::string y3 = ColorizeString("Test 7", ConsoleForegroundColor::ForeBrightYellow, ConsoleBackgroundColor::BackGray);
 
-	std::cout << y1 << std::endl;
-	std::cout << y2 << std::endl;
-	std::cout << y3 << std::endl;
+	std::cout << std::endl << y1 << std::endl;
+	std::cout << std::endl << y2 << std::endl;
+	std::cout << std::endl << y3 << std::endl;
 
-	std::cout << UnColorizeString(y1) << std::endl;
+	std::cout << std::endl << UnColorizeString(y1) << std::endl;
 	std::cout << UnColorizeString(y2) << std::endl;
 	std::cout << UnColorizeString(y3) << std::endl;
 
 	unsigned int color = 0xe5bf1f;
 	unsigned int color2 = 0xda34c0;
 
-	std::cout << ColorizeString("\nNew test with custom colors", color, false) << std::endl;
-	std::cout << ColorizeString("\nNew test with custom colors 2", color, true) << std::endl;
-	std::cout << ColorizeString("\nNew test with custom foreground and background colors", color, color2) << std::endl;
+	t = ColorizeString("New test with custom colors", color, false);
+	std::cout << std::endl<< t << std::endl;
 
-	std::cout << "End of test" << std::endl;
+	t = ColorizeString("New test with custom colors 2", color, true);
+	std::cout << std::endl<< t << std::endl;
 
-	std::cout << ColorizeString("\n\n\nPress enter to continue...", ConsoleForegroundColor::ForeRed);
+	t = ColorizeString("New test with custom foreground and background colors", color, color2);
+	std::cout << std::endl<< t << std::endl;
+
+	unsigned int endColor = 0xFF0000;
+	unsigned int endColorB = 0xFFFFFF;
+
+	t = ColorizeString("End of test", endColor, endColorB);
+	std::cout << std::endl << t << " Last with hexadecimal colors." << std::endl;
+	
+	ConsoleExt::ColorData pressEnterColor;
+	ConsoleExt::ColorData pressEnterColorB;
+
+	pressEnterColor.r = 0;
+	pressEnterColor.g = 0;
+	pressEnterColor.b = 0;
+
+	pressEnterColorB.r = 255;
+	pressEnterColorB.g = 255;
+	pressEnterColorB.b = 255;
+
+	t = ColorizeString("Test press", pressEnterColor, pressEnterColor);
+	std::cout << t << std::endl;
+
+	t = ColorizeString("\n\n\nPress enter to continue...", ConsoleForegroundColor::ForeRed, ConsoleBackgroundColor::BackGray);
+	std::cout << t;
+	t = ColorizeString("Press enter to continue...", pressEnterColor, pressEnterColorB);
+	std::cout << std::endl << std::endl << std::endl << t;
 	#pragma warning ( suppress : 6031 ) // Make Visual Studio ignore warning for this test
 	std::getchar();
 
@@ -95,7 +130,7 @@ int main (int argc, const char* argv[], const char* argp[])
 
 	#ifdef WSTRING_TEST
 
-	DrawBorderW();
+	DrawBorderW(1, 1, 110, 30, 0, 0);
 	SetCursorPositionW(5, 2);
 
 	std::wcout << L"Project Drive Manager Console" << std::endl;
@@ -109,7 +144,7 @@ int main (int argc, const char* argv[], const char* argp[])
 
 	DrawHorizontalLineW(6, 6, 12, false, false);
 
-	DrawBorderW(10, 10, 50, 20);
+	DrawBorderW(10, 10, 50, 20, 0, 0);
 
 	using namespace std::chrono_literals;
 

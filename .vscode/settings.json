@@ -52,7 +52,6 @@
     },
     "files.associations": {
         "*.sln": "properties",
-        "iostream": "cpp"
     },
     "git.branchProtection": ["master"],
     "cmake.options.statusBarVisibility": "icon",
