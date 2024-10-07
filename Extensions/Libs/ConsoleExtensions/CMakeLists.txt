@@ -73,7 +73,9 @@ if (WIN32)
 					ConsoleExtensions
 					SHARED
 					"dllmain.hpp" "dllmain.cpp"
-					"Version.hpp"
+					# Console Extensions Version:
+					"ConsoleExtVersion.hpp"
+					"ConsoleExtVersionTools.hpp"
 					# Console Colorized String:
 					"ConsoleColorizedString/ColorString.hpp" "ConsoleColorizedString/ColorString.cpp"
 					"ConsoleColorizedString/ColorWstring.hpp" "ConsoleColorizedString/ColorWstring.cpp"
@@ -95,7 +97,9 @@ else()
 	add_library(
 					ConsoleExtensions
 					SHARED
-					"Version.hpp"
+					# Console Extensions Version:
+					"ConsoleExtVersion.hpp"
+					"ConsoleExtVersionTools.hpp"
 					# Console Colorized String:
 					"ConsoleColorizedString/ColorString.hpp" "ConsoleColorizedString/ColorString.cpp"
 					"ConsoleColorizedString/ColorWstring.hpp" "ConsoleColorizedString/ColorWstring.cpp"

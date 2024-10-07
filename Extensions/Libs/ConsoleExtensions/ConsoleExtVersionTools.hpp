@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef CONSOLE_EXT_VERSION_HPP
-#define CONSOLE_EXT_VERSION_HPP
+#ifndef CONSOLE_EXT_VERSION_TOOLS_HPP
+#define CONSOLE_EXT_VERSION_TOOLS_HPP
 
 #ifdef WIN32
 	#ifdef CONSOLE_EXT_VERSION_EXPORTS
@@ -28,13 +28,8 @@
 	#endif
 #endif // !WIN32
 
+#include "ConsoleExtVersion.hpp"
 #include <string>
-
-#define CONSOLE_EXT_MAJOR_VERSION		1
-#define CONSOLE_EXT_MINOR_VERSION		0
-#define CONSOLE_EXT_REVISION_NUMBER		0
-#define CONSOLE_EXT_BUILD_NUMBER		1
-#define CONSOLE_EXT_BUILD_TYPE			"alpha"
 
 /**
  * @brief Console Extensions
@@ -94,4 +89,4 @@ namespace ConsoleExt
 	}
 }
 
-#endif // !CONSOLE_EXT_VERSION_HPP
+#endif // !CONSOLE_EXT_VERSION_TOOLS_HPP
