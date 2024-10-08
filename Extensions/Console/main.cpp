@@ -6,9 +6,11 @@
 #include <thread>
 #include <chrono>
 #include <locale>
+
 #include "ConsoleExtInterface.hpp"
 #include "ConsoleColorString.hpp"
 #include "ConsoleControls.hpp"
+#include "ConsoleExtVersionTools.hpp"
 
 #define STRING_TEST
 //#define WSTRING_TEST
@@ -39,7 +41,7 @@ int main (int argc, const char* argv[], const char* argp[])
 	DrawBorder(1, 1, 110, 30, 0, 0);
 	SetCursorPosition(5, 2);
 
-	std::wcout << L"Project Drive Manager Console" << std::endl;
+	std::cout << "Project Drive Manager Console\t" << ConsoleExt::getVersionStr(ConsoleExt::getLibVersion(), true, true) << std::endl;
 
 	DrawHorizontalLine(1, 3, 110, true, true);
 

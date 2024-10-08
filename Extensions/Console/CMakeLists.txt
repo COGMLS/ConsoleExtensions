@@ -32,6 +32,8 @@ endif()
 add_compile_definitions(UNICODE)
 add_compile_definitions(_UNICODE)
 
+set(ConsoleExtTestRoot ${CMAKE_CURRENT_LIST_DIR})
+
 # Defined the project:
 project(
 			ConsoleExtTest
@@ -47,10 +49,13 @@ project(
 
 # Include libraries directories source codes:
 #include_directories("${ConsoleExtRoot}/Libs/<lib>")
+include_directories("${ConsoleExtRoot}/Libs/ConsoleExtensions")
 include_directories("${ConsoleExtRoot}/Libs/ConsoleExtensions/ConsoleColorizedString")
+include_directories("${ConsoleExtRoot}/Libs/ConsoleExtensions/ConsoleDataTypes")
+include_directories("${ConsoleExtRoot}/Libs/ConsoleExtensions/ConsoleExtControls")
 include_directories("${ConsoleExtRoot}/Libs/ConsoleExtensions/ConsoleExtInterface")
 include_directories("${ConsoleExtRoot}/Libs/ConsoleExtensions/ErrorReport")
-include_directories("${ConsoleExtRoot}/Libs/ConsoleExtensions/ConsoleExtControls")
+#target_include_directories(ConsoleExtensions PUBLIC "${ConsoleExtRoot}/Libs/ConsoleExtensions")
 
 # Define the executable properties:
 add_executable(
@@ -84,5 +89,5 @@ if(UseTargetLinkLibs)
 		target_link_libraries(ConsoleExtTest ${CMAKE_SOURCE_DIR}/build/bin/libConsoleExtensions.so)
 	endif()
 else()
-	link_libraries(ConsoleExtTest ConsoleExtensions)
+	target_link_libraries(ConsoleExtTest ConsoleExtensions)
 endif()
