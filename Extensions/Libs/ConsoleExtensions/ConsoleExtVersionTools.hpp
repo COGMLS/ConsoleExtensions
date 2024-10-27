@@ -62,7 +62,7 @@ namespace ConsoleExt
 		v.patch = CONSOLE_EXT_PATCH_VERSION;
 		v.revision = CONSOLE_EXT_REVISION_NUMBER;
 		v.build = CONSOLE_EXT_BUILD_NUMBER;
-		v.type = static_cast<char*>(CONSOLE_EXT_BUILD_TYPE);
+		std::strcpy(v.type, CONSOLE_EXT_BUILD_TYPE);
 		return v;
 	}
 
