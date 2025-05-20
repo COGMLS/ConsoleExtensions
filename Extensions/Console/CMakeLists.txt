@@ -37,7 +37,7 @@ set(ConsoleExtTestRoot ${CMAKE_CURRENT_LIST_DIR})
 # Defined the project:
 project(
 			ConsoleExtTest
-			VERSION 0.0.1
+			VERSION 0.5.0
 			DESCRIPTION "Console for Console Extensions Solution repository."
 		)
 
@@ -63,31 +63,4 @@ add_executable(
 					"main.cpp"
 				)
 
-###########################################################
-# WARNING: About the linking libraries for the Console:
-# --------------------------------------------------------
-# For some reason, the methods in the libraries are not
-# recognized directly, resulting in LINK2019 with MSVC or
-# "undefined referece to" in GCC, but the methods are generated
-# and exported. To mitigate this problem, set as "True" the
-# CMake variable "UseTargetLinkLibs" to link then manually.
-###########################################################
-
-set(UseTargetLinkLibs True)
-
-if(UseTargetLinkLibs)
-	if (WIN32)
-		if(DebugConsoleExtHelper)
-			#target_link_libraries(ConsoleExtTest ${CMAKE_SOURCE_DIR}/build/Extensions/Libs/<lib>/Debug/<libfile>.lib)
-			target_link_libraries(ConsoleExtTest ${CMAKE_SOURCE_DIR}/build/Extensions/Libs/<lib>/Debug/ConsoleExtensions.lib)
-		else()
-			#target_link_libraries(ConsoleExtTest ${CMAKE_SOURCE_DIR}/build/Extensions/Libs/<lib>/Release/<libfile>.lib)
-			target_link_libraries(ConsoleExtTest ${CMAKE_SOURCE_DIR}/build/Extensions/Libs/<lib>/Release/ConsoleExtensions.lib)
-		endif()
-	else()
-		#target_link_libraries(ConsoleExtTest ${CMAKE_SOURCE_DIR}/build/bin/lib<libName>.so)
-		target_link_libraries(ConsoleExtTest ${CMAKE_SOURCE_DIR}/build/bin/libConsoleExtensions.so)
-	endif()
-else()
-	target_link_libraries(ConsoleExtTest ConsoleExtensions)
-endif()
+target_link_libraries(ConsoleExtTest ConsoleExtensions)

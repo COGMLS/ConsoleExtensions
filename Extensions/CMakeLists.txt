@@ -35,7 +35,11 @@ add_compile_definitions(UNICODE)
 add_compile_definitions(_UNICODE)
 
 # Define the project solution:
-project(ConsoleExtensionsHelper VERSION 0.0.1 DESCRIPTION "Complete solution for Console Extensions repository.")
+project(
+			ConsoleExtensionsHelper
+			VERSION 0.0.1
+			DESCRIPTION "Complete solution for Console Extensions repository."
+		)
 
 ###########################################################
 #

@@ -29,7 +29,11 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${FinalBinDir})
 # Set to debug all solution components:
 set(DebugSolution True)
 
-project(ConsoleExtensionsSolution VERSION 0.0.1 DESCRIPTION "Complete solution for Console Extensions Solution repository.")
+project(
+			ConsoleExtensionsSolution
+			VERSION 0.0.1
+			DESCRIPTION "Complete solution for Console Extensions Solution repository."
+		)
 
 ###########################################################
 #

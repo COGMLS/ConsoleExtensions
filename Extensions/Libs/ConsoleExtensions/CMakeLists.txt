@@ -118,9 +118,3 @@ else()
 				)
 endif()
 
-# If necessary, link libraries to this one:
-if(DebugConsoleExtHelper)
-	#target_link_libraries(ConsoleExtTest ${CMAKE_SOURCE_DIR}/build/Extensions/Libs/<lib>/Debug/<libfile>.lib)
-else()
-	#target_link_libraries(ConsoleExtTest ${CMAKE_SOURCE_DIR}/build/Extensions/Libs/<lib>/Release/<libfile>.lib)
-endif()

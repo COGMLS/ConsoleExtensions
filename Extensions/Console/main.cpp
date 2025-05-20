@@ -12,6 +12,8 @@
 #include "ConsoleControls.hpp"
 #include "ConsoleExtVersionTools.hpp"
 
+#include "StringExt.hpp"
+
 #define STRING_TEST
 //#define WSTRING_TEST
 
@@ -120,6 +122,9 @@ int main (int argc, const char* argv[], const char* argp[])
 
 	t = ColorizeString("Test press", pressEnterColor, pressEnterColor);
 	std::cout << t << std::endl;
+
+	ConsoleExt::String str;
+	auto options = str.getOptions();
 
 	t = ColorizeString("\n\n\nPress enter to continue...", ConsoleForegroundColor::ForeRed, ConsoleBackgroundColor::BackGray);
 	std::cout << t;
