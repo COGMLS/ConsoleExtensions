@@ -12,7 +12,7 @@ This project was designed to make easier the process to use create or modified C
 
 ## Projects:
 
-| Project / Library | Version | Notes |
+| Library component | Version | Notes |
 | ----------------- | ------- | ----- |
 | ConsoleColorizedString | 1.6.13 |  |
 | ConsoleExtControls | 0.5.0 |  |
@@ -29,7 +29,7 @@ An license copy is available in [here](/LICENSE.txt)
 
 MIT License
 
-Copyright (c) 2022-2024 Matheus Lopes Silvati
+Copyright (c) 2022-2025 Matheus Lopes Silvati
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
