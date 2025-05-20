@@ -1,6 +1,6 @@
 #include "StringTools.hpp"
 
-CONSOLE_EXT_COLOR_STR_LIB_API std::string ConsoleExt::applyStrOptions(const std::string &str, const std::set<ConsoleExt::SgrOptions> &options)
+std::string ConsoleExt::applyStrOptions(const std::string &str, const std::set<ConsoleExt::SgrOptions> &options)
 {
 	bool resetAttr = false;
 	std::string tmpStr;

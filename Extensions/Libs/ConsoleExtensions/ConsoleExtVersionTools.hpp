@@ -4,27 +4,27 @@
 #define CONSOLE_EXT_VERSION_TOOLS_HPP
 
 #ifdef WIN32
-	#ifdef CONSOLE_EXT_VERSION_EXPORTS
-		#define CONSOLE_EXT_VERSION_LIB_API __declspec(dllexport)
+	#ifdef CONSOLE_EXTENSIONS_EXPORTS
+		#define CONSOLE_EXTENSIONS_API __declspec(dllexport)
 	#else
-		#define CONSOLE_EXT_VERSION_LIB_API __declspec(dllimport)
-	#endif //!CONSOLE_EXT_VERSION_EXPORTS
+		#define CONSOLE_EXTENSIONS_API __declspec(dllimport)
+	#endif //!CONSOLE_EXTENSIONS_EXPORTS
 
 	#pragma warning (disable : 4251)
 	#pragma warning (disable : 4273)
 #else
 	#if __GNUC__ >= 4
-		#ifdef CONSOLE_EXT_VERSION_EXPORTS
-			#define CONSOLE_EXT_VERSION_LIB_API __attribute__((visibility("default")))
+		#ifdef CONSOLE_EXTENSIONS_EXPORTS
+			#define CONSOLE_EXTENSIONS_API __attribute__((visibility("default")))
 		#else
-			#define CONSOLE_EXT_VERSION_LIB_API __attribute__((visibility("default")))
-		#endif //!CONSOLE_EXT_VERSION_EXPORTS
+			#define CONSOLE_EXTENSIONS_API __attribute__((visibility("default")))
+		#endif //!CONSOLE_EXTENSIONS_EXPORTS
 	#else
-		#ifdef CONSOLE_EXT_VERSION_EXPORTS
-			#define CONSOLE_EXT_VERSION_LIB_API
+		#ifdef CONSOLE_EXTENSIONS_EXPORTS
+			#define CONSOLE_EXTENSIONS_API
 		#else
-			#define CONSOLE_EXT_VERSION_LIB_API
-		#endif //!CONSOLE_EXT_VERSION_EXPORTS
+			#define CONSOLE_EXTENSIONS_API
+		#endif //!CONSOLE_EXTENSIONS_EXPORTS
 	#endif
 #endif // !WIN32
 
@@ -54,7 +54,7 @@ namespace ConsoleExt
 	 * @brief Get the Console Extensions Library version
 	 * @return Return a Version struct
 	 */
-	CONSOLE_EXT_VERSION_LIB_API inline ConsoleExt::Version getLibVersion()
+	CONSOLE_EXTENSIONS_API inline ConsoleExt::Version getLibVersion()
 	{
 		Version v;
 		v.major = CONSOLE_EXT_MAJOR_VERSION;
@@ -74,7 +74,7 @@ namespace ConsoleExt
 	 * @param showType Show the build type.
 	 * @return Return a string version.
 	 */
-	CONSOLE_EXT_VERSION_LIB_API inline std::string getVersionStr (ConsoleExt::Version version, bool showBuild, bool showType)
+	CONSOLE_EXTENSIONS_API inline std::string getVersionStr (ConsoleExt::Version version, bool showBuild, bool showType)
 	{
 		std::string s;
 		s = std::to_string(version.major) + "." + std::to_string(version.minor) + "." + std::to_string(version.patch);

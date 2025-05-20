@@ -57,17 +57,8 @@ include_directories("${ConsoleExtLibRoot}/ConsoleExtInterface")
 include_directories("${ConsoleExtLibRoot}/ErrorReport")
 
 # Define to export the library methods if is Windows:
-if(WIN32)
-	# Add the export here
-	add_compile_definitions(CONSOLE_EXT_VERSION_EXPORTS)
-	add_compile_definitions(CONSOLE_EXT_DATA_TYPES_EXPORTS)
-	add_compile_definitions(CONSOLE_EXT_COLOR_STR_EXPORTS)
-	add_compile_definitions(CONSOLE_EXT_COLOR_WSTR_EXPORTS)
-	add_compile_definitions(CONSOLE_EXT_ERROR_EXPORTS)
-	add_compile_definitions(CONSOLE_EXT_EXCEPTION_EXPORTS)
-	add_compile_definitions(CONSOLE_EXT_GRAPHIC_INTERFACE_EXPORTS)
-	add_compile_definitions(CONSOLE_EXT_CONSOLE_CONTROLS_EXPORTS)
-endif()
+# Add the export here
+add_compile_definitions(CONSOLE_EXTENSIONS_EXPORTS)
 
 # Define the library build properties:
 if (WIN32)
@@ -86,6 +77,7 @@ if (WIN32)
 					"ConsoleColorizedString/ConsoleColorString.hpp"
 					"ConsoleColorizedString/EnumColors.hpp"
 					"ConsoleColorizedString/StringExt.hpp" "ConsoleColorizedString/StringExt.cpp"
+					"ConsoleColorizedString/StringTools.hpp" "ConsoleColorizedString/StringTools.cpp"
 					# Console Ext Controls:
 					"ConsoleExtControls/AsciiControls.hpp"
 					"ConsoleExtControls/AsciiSGR.hpp"
@@ -112,6 +104,7 @@ else()
 					"ConsoleColorizedString/ConsoleColorString.hpp"
 					"ConsoleColorizedString/EnumColors.hpp"
 					"ConsoleColorizedString/StringExt.hpp" "ConsoleColorizedString/StringExt.cpp"
+					"ConsoleColorizedString/StringTools.hpp" "ConsoleColorizedString/StringTools.cpp"
 					# Console Ext Controls:
 					"ConsoleExtControls/AsciiControls.hpp"
 					"ConsoleExtControls/AsciiSGR.hpp"

@@ -4,11 +4,11 @@
 #define ASCII_GRAPHIC_INTERFACE_HPP
 
 #ifdef WIN32
-	#ifdef CONSOLE_EXT_GRAPHIC_INTERFACE_EXPORTS
-		#define CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API __declspec(dllexport)
+	#ifdef CONSOLE_EXTENSIONS_EXPORTS
+		#define CONSOLE_EXTENSIONS_API __declspec(dllexport)
 	#else
-		#define CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API __declspec(dllimport)
-	#endif //!CONSOLE_EXT_GRAPHIC_INTERFACE_EXPORTS
+		#define CONSOLE_EXTENSIONS_API __declspec(dllimport)
+	#endif //!CONSOLE_EXTENSIONS_EXPORTS
 
 	#pragma warning (disable : 4251)
 	#pragma warning (disable : 4273)
@@ -17,17 +17,17 @@
 	#pragma warning (disable : 4566)
 #else
 	#if __GNUC__ >= 4
-		#ifdef CONSOLE_EXT_GRAPHIC_INTERFACE_EXPORTS
-			#define CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API __attribute__((visibility("default")))
+		#ifdef CONSOLE_EXTENSIONS_EXPORTS
+			#define CONSOLE_EXTENSIONS_API __attribute__((visibility("default")))
 		#else
-			#define CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API __attribute__((visibility("default")))
-		#endif //!CONSOLE_EXT_GRAPHIC_INTERFACE_EXPORTS
+			#define CONSOLE_EXTENSIONS_API __attribute__((visibility("default")))
+		#endif //!CONSOLE_EXTENSIONS_EXPORTS
 	#else
-		#ifdef CONSOLE_EXT_GRAPHIC_INTERFACE_EXPORTS
-			#define CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API
+		#ifdef CONSOLE_EXTENSIONS_EXPORTS
+			#define CONSOLE_EXTENSIONS_API
 		#else
-			#define CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API
-		#endif //!CONSOLE_EXT_GRAPHIC_INTERFACE_EXPORTS
+			#define CONSOLE_EXTENSIONS_API
+		#endif //!CONSOLE_EXTENSIONS_EXPORTS
 	#endif
 #endif // !WIN32
 

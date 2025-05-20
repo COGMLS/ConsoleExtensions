@@ -4,11 +4,11 @@
 #define CONSOLE_EXT_GRAPHIC_INTERFACE_HPP
 
 #ifdef WIN32
-	#ifdef CONSOLE_EXT_GRAPHIC_INTERFACE_EXPORTS
-		#define CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API __declspec(dllexport)
+	#ifdef CONSOLE_EXTENSIONS_EXPORTS
+		#define CONSOLE_EXTENSIONS_API __declspec(dllexport)
 	#else
-		#define CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API __declspec(dllimport)
-	#endif //!CONSOLE_EXT_GRAPHIC_INTERFACE_EXPORTS
+		#define CONSOLE_EXTENSIONS_API __declspec(dllimport)
+	#endif //!CONSOLE_EXTENSIONS_EXPORTS
 
 	#pragma warning (disable : 4251)
 	#pragma warning (disable : 4273)
@@ -17,17 +17,17 @@
 	#pragma warning (disable : 4566)
 #else
 	#if __GNUC__ >= 4
-		#ifdef CONSOLE_EXT_GRAPHIC_INTERFACE_EXPORTS
-			#define CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API __attribute__((visibility("default")))
+		#ifdef CONSOLE_EXTENSIONS_EXPORTS
+			#define CONSOLE_EXTENSIONS_API __attribute__((visibility("default")))
 		#else
-			#define CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API __attribute__((visibility("default")))
-		#endif //!CONSOLE_EXT_GRAPHIC_INTERFACE_EXPORTS
+			#define CONSOLE_EXTENSIONS_API __attribute__((visibility("default")))
+		#endif //!CONSOLE_EXTENSIONS_EXPORTS
 	#else
-		#ifdef CONSOLE_EXT_GRAPHIC_INTERFACE_EXPORTS
-			#define CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API
+		#ifdef CONSOLE_EXTENSIONS_EXPORTS
+			#define CONSOLE_EXTENSIONS_API
 		#else
-			#define CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API
-		#endif //!CONSOLE_EXT_GRAPHIC_INTERFACE_EXPORTS
+			#define CONSOLE_EXTENSIONS_API
+		#endif //!CONSOLE_EXTENSIONS_EXPORTS
 	#endif
 #endif // !WIN32
 
@@ -54,7 +54,7 @@ namespace ConsoleExt
 	 * @note startPosX and startPosY need be greater than zero.
 	 * @note If CONSOLE_EXT_SET_CURSOR_POSX or CONSOLE_EXT_SET_CURSOR_POSY holds zero or a negative value, the cursor will be restored to last position before draw the border.
 	 */
-	CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API void DrawBorder(int startPosX, int startPosY, int maxWidth, int maxHeight, int CONSOLE_EXT_SET_CURSOR_POSX, int CONSOLE_EXT_SET_CURSOR_POSY);
+	CONSOLE_EXTENSIONS_API void DrawBorder(int startPosX, int startPosY, int maxWidth, int maxHeight, int CONSOLE_EXT_SET_CURSOR_POSX, int CONSOLE_EXT_SET_CURSOR_POSY);
 
 	/**
 	 * @brief Draw a border in the console screen
@@ -67,7 +67,7 @@ namespace ConsoleExt
 	 * @note startPosX and startPosY need be greater than zero.
 	 * @note If CONSOLE_EXT_SET_CURSOR_POSX or CONSOLE_EXT_SET_CURSOR_POSY holds zero or a negative value, the cursor will be restored to last position before draw the border.
 	 */
-	CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API void DrawBorderW(int startPosX, int startPosY, int maxWidth, int maxHeight, int CONSOLE_EXT_SET_CURSOR_POSX, int CONSOLE_EXT_SET_CURSOR_POSY);
+	CONSOLE_EXTENSIONS_API void DrawBorderW(int startPosX, int startPosY, int maxWidth, int maxHeight, int CONSOLE_EXT_SET_CURSOR_POSX, int CONSOLE_EXT_SET_CURSOR_POSY);
 
 	/**
 	 * @brief Draw a horizontal line in the console screen
@@ -77,7 +77,7 @@ namespace ConsoleExt
 	 * @param useStartCrossLine Use a cross line mark
 	 * @param useEndCrossLine Use a end cross line mark
 	 */
-	CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API void DrawHorizontalLine(int xStart, int yStart, int count, bool useStartCrossLine, bool useEndCrossLine);
+	CONSOLE_EXTENSIONS_API void DrawHorizontalLine(int xStart, int yStart, int count, bool useStartCrossLine, bool useEndCrossLine);
 
 	/**
 	 * @brief Draw a horizontal line in the console screen
@@ -87,7 +87,7 @@ namespace ConsoleExt
 	 * @param useStartCrossLine Use a cross line mark
 	 * @param useEndCrossLine Use a end cross line mark
 	 */
-	CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API void DrawHorizontalLineW(int xStart, int yStart, int count, bool useStartCrossLine, bool useEndCrossLine);
+	CONSOLE_EXTENSIONS_API void DrawHorizontalLineW(int xStart, int yStart, int count, bool useStartCrossLine, bool useEndCrossLine);
 
 	/**
 	 * @brief Draw a progress bar with a counter and the final value to be reached
@@ -97,7 +97,7 @@ namespace ConsoleExt
 	 * @param maxValue Final value that need be reached
 	 * @param actualValue Actual value in progress bar. NOTE: The progress bar need be called again to update the console informations
 	 */
-	CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API void DrawProgressBar(int progressBarXPos, int progressBarYPor, int maxWidth, int maxValue, int actualValue);
+	CONSOLE_EXTENSIONS_API void DrawProgressBar(int progressBarXPos, int progressBarYPor, int maxWidth, int maxValue, int actualValue);
 
 	/**
 	 * @brief Draw a progress bar with a counter and the final value to be reached
@@ -107,7 +107,7 @@ namespace ConsoleExt
 	 * @param maxValue Final value that need be reached
 	 * @param actualValue Actual value in progress bar. NOTE: The progress bar need be called again to update the console informations
 	 */
-	CONSOLE_EXT_GRAPHIC_INTERFACE_LIB_API void DrawProgressBarW(int progressBarXPos, int progressBarYPor, int maxWidth, int maxValue, int actualValue);
+	CONSOLE_EXTENSIONS_API void DrawProgressBarW(int progressBarXPos, int progressBarYPor, int maxWidth, int maxValue, int actualValue);
 }
 
 #endif //!CONSOLE_EXT_GRAPHIC_INTERFACE_HPP

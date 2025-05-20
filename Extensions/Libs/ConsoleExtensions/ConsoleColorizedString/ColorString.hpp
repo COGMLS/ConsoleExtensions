@@ -4,27 +4,27 @@
 #define COLOR_STRING_HPP
 
 #ifdef WIN32
-	#ifdef CONSOLE_EXT_COLOR_STR_EXPORTS
-		#define CONSOLE_EXT_COLOR_STR_LIB_API __declspec(dllexport)
+	#ifdef CONSOLE_EXTENSIONS_EXPORTS
+		#define CONSOLE_EXTENSIONS_API __declspec(dllexport)
 	#else
-		#define CONSOLE_EXT_COLOR_STR_LIB_API __declspec(dllimport)
-	#endif //!CONSOLE_EXT_COLOR_STR_EXPORTS
+		#define CONSOLE_EXTENSIONS_API __declspec(dllimport)
+	#endif //!CONSOLE_EXTENSIONS_EXPORTS
 
 	#pragma warning (disable : 4251)
 	#pragma warning (disable : 4273)
 #else
 	#if __GNUC__ >= 4
-		#ifdef CONSOLE_EXT_COLOR_STR_EXPORTS
-			#define CONSOLE_EXT_COLOR_STR_LIB_API __attribute__((visibility("default")))
+		#ifdef CONSOLE_EXTENSIONS_EXPORTS
+			#define CONSOLE_EXTENSIONS_API __attribute__((visibility("default")))
 		#else
-			#define CONSOLE_EXT_COLOR_STR_LIB_API __attribute__((visibility("default")))
-		#endif //!CONSOLE_EXT_COLOR_STR_EXPORTS
+			#define CONSOLE_EXTENSIONS_API __attribute__((visibility("default")))
+		#endif //!CONSOLE_EXTENSIONS_EXPORTS
 	#else
-		#ifdef CONSOLE_EXT_COLOR_STR_EXPORTS
-			#define CONSOLE_EXT_COLOR_STR_LIB_API
+		#ifdef CONSOLE_EXTENSIONS_EXPORTS
+			#define CONSOLE_EXTENSIONS_API
 		#else
-			#define CONSOLE_EXT_COLOR_STR_LIB_API
-		#endif //!CONSOLE_EXT_COLOR_STR_EXPORTS
+			#define CONSOLE_EXTENSIONS_API
+		#endif //!CONSOLE_EXTENSIONS_EXPORTS
 	#endif
 #endif // !WIN32
 
@@ -42,7 +42,7 @@ namespace ConsoleExt
 	 * @param fColor Foreground color string
 	 * @return Colorized string, using ASCII code
 	 */
-	CONSOLE_EXT_COLOR_STR_LIB_API std::string ColorizeString(std::string str, ConsoleExt::ConsoleForegroundColor fColor);
+	CONSOLE_EXTENSIONS_API std::string ColorizeString(std::string str, ConsoleExt::ConsoleForegroundColor fColor);
 
 	/**
 	 * @brief Colorize string
@@ -50,7 +50,7 @@ namespace ConsoleExt
 	 * @param bColor Background color string
 	 * @return Colorized string, using ASCII code
 	 */
-	CONSOLE_EXT_COLOR_STR_LIB_API std::string ColorizeString(std::string str, ConsoleExt::ConsoleBackgroundColor bColor);
+	CONSOLE_EXTENSIONS_API std::string ColorizeString(std::string str, ConsoleExt::ConsoleBackgroundColor bColor);
 
 	/**
 	 * @brief Colorize string
@@ -59,7 +59,7 @@ namespace ConsoleExt
 	 * @param bColor Background color string
 	 * @return Colorized string, using ASCII code
 	 */
-	CONSOLE_EXT_COLOR_STR_LIB_API std::string ColorizeString(std::string str, ConsoleExt::ConsoleForegroundColor fColor, ConsoleExt::ConsoleBackgroundColor bColor);
+	CONSOLE_EXTENSIONS_API std::string ColorizeString(std::string str, ConsoleExt::ConsoleForegroundColor fColor, ConsoleExt::ConsoleBackgroundColor bColor);
 
 	/**
 	 * @brief Colorize string
@@ -69,7 +69,7 @@ namespace ConsoleExt
 	 * @return Colorized string, using ASCII code
 	 * @note The integer is used as hexadecimal color using the traditional RGB (0xRRGGBB)
 	 */
-	CONSOLE_EXT_COLOR_STR_LIB_API std::string ColorizeString(std::string str, unsigned int color, bool background);
+	CONSOLE_EXTENSIONS_API std::string ColorizeString(std::string str, unsigned int color, bool background);
 
 	/**
 	 * @brief Colorize string
@@ -78,7 +78,7 @@ namespace ConsoleExt
 	 * @param background Define to apply the color to the background
 	 * @return Colorized string, using ASCII code
 	 */
-	CONSOLE_EXT_COLOR_STR_LIB_API std::string ColorizeString(std::string str, ConsoleExt::ColorData color, bool background);
+	CONSOLE_EXTENSIONS_API std::string ColorizeString(std::string str, ConsoleExt::ColorData color, bool background);
 
 	/**
 	 * @brief Colorize string
@@ -88,7 +88,7 @@ namespace ConsoleExt
 	 * @return Colorized string, using ASCII code
 	 * @note The integer is used as hexadecimal color using the traditional RGB (0xRRGGBB)
 	 */
-	CONSOLE_EXT_COLOR_STR_LIB_API std::string ColorizeString(std::string str, unsigned int fColor, unsigned int bColor);
+	CONSOLE_EXTENSIONS_API std::string ColorizeString(std::string str, unsigned int fColor, unsigned int bColor);
 
 	/**
 	 * @brief Colorize string
@@ -97,7 +97,7 @@ namespace ConsoleExt
 	 * @param bColor Background Color Data structure
 	 * @return Colorized string, using ASCII code
 	 */
-	CONSOLE_EXT_COLOR_STR_LIB_API std::string ColorizeString(std::string str, ConsoleExt::ColorData fColor, ConsoleExt::ColorData bColor);
+	CONSOLE_EXTENSIONS_API std::string ColorizeString(std::string str, ConsoleExt::ColorData fColor, ConsoleExt::ColorData bColor);
 
 	/**
 	 * @brief Remove the colors from a string (background and foreground)
@@ -105,7 +105,7 @@ namespace ConsoleExt
 	 * @return Return the uncolored string if is successful, otherwise will return the same string if failed
 	 * @note This function was not designed to remove the color on strings with custom RGB colors
 	 */
-	CONSOLE_EXT_COLOR_STR_LIB_API std::string UnColorizeString(std::string str);
+	CONSOLE_EXTENSIONS_API std::string UnColorizeString(std::string str);
 }
 
 #endif // !COLOR_STRING_HPP

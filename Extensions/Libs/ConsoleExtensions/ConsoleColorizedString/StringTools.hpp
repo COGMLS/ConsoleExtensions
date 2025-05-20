@@ -4,27 +4,27 @@
 #define CONSOLE_EXT_STRING_TOOLS_HPP
 
 #ifdef WIN32
-	#ifdef CONSOLE_EXT_COLOR_STR_EXPORTS
-		#define CONSOLE_EXT_COLOR_STR_LIB_API __declspec(dllexport)
+	#ifdef CONSOLE_EXTENSIONS_EXPORTS
+		#define CONSOLE_EXTENSIONS_API __declspec(dllexport)
 	#else
-		#define CONSOLE_EXT_COLOR_STR_LIB_API __declspec(dllimport)
-	#endif //!CONSOLE_EXT_COLOR_STR_EXPORTS
+		#define CONSOLE_EXTENSIONS_API __declspec(dllimport)
+	#endif //!CONSOLE_EXTENSIONS_EXPORTS
 
 	#pragma warning (disable : 4251)
 	#pragma warning (disable : 4273)
 #else
 	#if __GNUC__ >= 4
-		#ifdef CONSOLE_EXT_COLOR_STR_EXPORTS
-			#define CONSOLE_EXT_COLOR_STR_LIB_API __attribute__((visibility("default")))
+		#ifdef CONSOLE_EXTENSIONS_EXPORTS
+			#define CONSOLE_EXTENSIONS_API __attribute__((visibility("default")))
 		#else
-			#define CONSOLE_EXT_COLOR_STR_LIB_API __attribute__((visibility("default")))
-		#endif //!CONSOLE_EXT_COLOR_STR_EXPORTS
+			#define CONSOLE_EXTENSIONS_API __attribute__((visibility("default")))
+		#endif //!CONSOLE_EXTENSIONS_EXPORTS
 	#else
-		#ifdef CONSOLE_EXT_COLOR_STR_EXPORTS
-			#define CONSOLE_EXT_COLOR_STR_LIB_API
+		#ifdef CONSOLE_EXTENSIONS_EXPORTS
+			#define CONSOLE_EXTENSIONS_API
 		#else
-			#define CONSOLE_EXT_COLOR_STR_LIB_API
-		#endif //!CONSOLE_EXT_COLOR_STR_EXPORTS
+			#define CONSOLE_EXTENSIONS_API
+		#endif //!CONSOLE_EXTENSIONS_EXPORTS
 	#endif
 #endif // !WIN32
 
@@ -37,7 +37,7 @@
 
 namespace ConsoleExt
 {
-	CONSOLE_EXT_COLOR_STR_LIB_API std::string applyStrOptions (const std::string& str, const std::set<ConsoleExt::SgrOptions>& options);
+	CONSOLE_EXTENSIONS_API std::string applyStrOptions (const std::string& str, const std::set<ConsoleExt::SgrOptions>& options);
 }
 
 #endif // !CONSOLE_EXT_STRING_TOOLS_HPP
