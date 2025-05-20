@@ -29,7 +29,9 @@
 #endif // !WIN32
 
 #include <string>
-#include <vector>
+#include <set>
+#include <ostream>
+#include <istream>
 
 #include "EnumColors.hpp"
 
@@ -43,31 +45,78 @@ namespace ConsoleExt
 		private:
 
 			std::string data;
-			std::vector<ConsoleExt::SgrOptions> options;
+			std::set<ConsoleExt::SgrOptions> options;
 
 			std::string applyAsciiOptions();
 		
 		public:
 
+			//
+			// Constructors and Destructor:
+			//
+
 			String();
 
 			String (std::string value);
 
-			String (std::string value, std::vector<ConsoleExt::SgrOptions> options);
+			String (std::string value, std::set<ConsoleExt::SgrOptions> options);
+
+			String (const ConsoleExt::String& other);
+
+			String (ConsoleExt::String&& other) noexcept;
 
 			~String();
 
-			void setOption(ConsoleExt::SgrOptions option);
+			//
+			// Options controls:
+			//
 
-			bool hasOption(ConsoleExt::SgrOptions option);
+			void setOption (ConsoleExt::SgrOptions option);
 
-			std::vector<ConsoleExt::SgrOptions> getOptions();
+			bool hasOption (ConsoleExt::SgrOptions option);
+
+			void remOption (ConsoleExt::SgrOptions option);
+
+			std::set<ConsoleExt::SgrOptions> getOptions();
+
+			//
+			// String data methods:
+			//
 
 			std::string getRawString();
 
 			std::string getFormattedString();
 
 			void setRawString (std::string value);
+
+			//
+			// Operators:
+			//
+
+			ConsoleExt::String& operator= (const ConsoleExt::String& other);
+			ConsoleExt::String& operator= (const std::string& other);
+
+			ConsoleExt::String& operator= (ConsoleExt::String&& other) noexcept;
+			ConsoleExt::String& operator= (std::string&& other) noexcept;
+
+			ConsoleExt::String& operator+= (const ConsoleExt::String& other);
+			
+			bool operator== (const ConsoleExt::String& other);
+
+			friend inline ConsoleExt::String operator+ (ConsoleExt::String& lhs, const ConsoleExt::String& rhs)
+			{
+				return lhs += rhs;
+			}
+
+			friend inline std::ostream& operator<< (std::ostream& os, const ConsoleExt::String& str)
+			{
+				return os;
+			}
+
+			friend inline std::istream& operator>> (std::istream& is, ConsoleExt::String& str)
+			{
+				return is;
+			}
 	};
 }
 
