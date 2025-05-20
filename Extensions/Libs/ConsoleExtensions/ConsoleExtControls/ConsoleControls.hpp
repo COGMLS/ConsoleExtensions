@@ -29,6 +29,7 @@
 #endif // !WIN32
 
 #include "AsciiControls.hpp"
+#include "AsciiSGR.hpp"
 #include "LowLevelControls.hpp"
 
 #endif // !CONSOLE_EXT_CONSOLE_CONTROLS_HPP
