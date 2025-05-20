@@ -227,3 +227,15 @@ void ConsoleExt::LowLevel::ScrollDownW(int n)
 	std::wstring s = CONSOLE_EXT_SCROLL_DOWN_W(n);
 	std::wcout << s;
 }
+
+CONSOLE_EXT_CONSOLE_CONTROLS_LIB_API void ConsoleExt::LowLevel::ResetConsoleAttr()
+{
+	std::string s = SGR(0);
+	std::cout << s;
+}
+
+CONSOLE_EXT_CONSOLE_CONTROLS_LIB_API void ConsoleExt::LowLevel::ResetConsoleAttrW()
+{
+	std::wstring s = SGR_W(0);
+	std::wcout << s;
+}

@@ -39,7 +39,6 @@ namespace ConsoleExt
 {
 	namespace LowLevel
 	{
-
 		/**
 		 * @brief Makes an audible noise
 		 */
@@ -255,6 +254,16 @@ namespace ConsoleExt
 		 * @param n Number of lines that will be scrolled.
 		 */
 		CONSOLE_EXT_CONSOLE_CONTROLS_LIB_API void ScrollDownW(int n);
+
+		/**
+		 * @brief Reset all console attributes
+		 */
+		CONSOLE_EXT_CONSOLE_CONTROLS_LIB_API void ResetConsoleAttr();
+
+		/**
+		 * @brief Reset all console attributes
+		 */
+		CONSOLE_EXT_CONSOLE_CONTROLS_LIB_API void ResetConsoleAttrW();
 	}
 }
 
