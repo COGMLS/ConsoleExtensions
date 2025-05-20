@@ -2,13 +2,15 @@
 
 ## About this project:
 
-This project was designed to make easier the process to use create or modified C++ console projects, providing support with a simplified ASCII controls and also unified interface controls for Operation System console functions. The Console Extensions is developed under the ISO C++ features, allowing an easy way to integrate it on any software, independent the Operation System that is running.
+This project was designed to make easier the process to use create or modified C++ console projects, providing support with a simplified ASCII controls and also unified interface controls for Operation System console functions. The Console Extensions is developed under the ISO C++ features, allowing an easy way to integrate it on any software, independent of the Operation System that is running.
 
 **IMPORTANT:** The Console Extensions contain an collection of base libraries and headers to provide an equal behavior depending on the compiler. An good example is the Microsoft’s implementation on `std::exception` that is originally designed to be only a base class for other error handling classes. In `ErrorReport` library, that is an exception class that inherit from `std::exception` and provide the same behavior of Microsoft’s version, including an constructor to support to send an error message.
 
-**NOTE:** *This project is under development and is not ready for production use. The actual libraries available are functional, but is are under possible modifications.*
+**NOTE:** *This project is under development and is not ready for production use. The actual libraries available are functional, but can receive modification that may broke your code*
 
 **IMPORTANT:** (2024/09/27) ***The Console Extensions was redesigned to be compiled as a unified library. Reducing the dependency between each one and making easier to implement***
+
+**IMPORTANT:** (2025/05/20) ***The Console Extensions project was published in GitHub (2025/05/20) and it's passing by a documentation revision. Some documentations are outdated or may not exist.***
 
 ## Projects:
 
